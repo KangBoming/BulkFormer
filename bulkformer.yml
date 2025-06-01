@@ -1,4 +1,4 @@
-name: bulk
+name: bulkformer
 channels:
   - defaults
   - conda-forge
