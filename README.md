@@ -29,17 +29,42 @@ NA*: Geneformer, GeneCompass, and scGPT were not directly pretrained to model ge
 
 
 ## Main requirements
-* python=3.7.13
-* pytorch=1.10.0
-* cudatoolkit=11.3.1
-* scikit-learn=1.0.2
-* pandas=1.3.5
-* numpy=1.21.5
+* python=3.12.7
+* pytorch=2.5.1
+* scikit-learn=1.5.2
+* pandas=2.2.3
+* numpy=2.0.2
 * fair-esm=2.0.0
+* performer-pytorch=1.1.4
 
 ## Quick start
+**Step1: clone the repo**
+```
+mkdir ./BulkFormer
+cd BulkFormer
+git clone https://github.com/KangBoming/BulkFormer.git
+```
+**Step2: create and activate the environment**
+```
+cd BulkFormer
+conda env create -f bulkformer.yml
+conda activate bulkformer
+```
+**Step3: download pretrained model and data**
+```
+cd BulkFormer/model
+Please follow the README.md file to download pretrained BulkFormer model.
 
+cd BulkFormer/data
+Please follow the README.md file to download related data.
+```
 
+**Step4: model infernece**
+```
+cd BulkFormer
+
+Please follow bulkformer_extract_feature.ipynb
+```
 
 ## Publication
 BulkFormer: A large-scale foundation model for human bulk transcriptomes
