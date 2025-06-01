@@ -62,7 +62,6 @@ Please follow the README.md file to download related data.
 **Step4: model infernece**
 ```
 cd BulkFormer
-
 Please follow bulkformer_extract_feature.ipynb
 ```
 
