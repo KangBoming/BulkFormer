@@ -35,7 +35,6 @@ NA*: Geneformer, GeneCompass, and scGPT were not directly pretrained to model ge
 * scikit-learn=1.5.2
 * pandas=2.2.3
 * numpy=2.0.2
-* fair-esm=2.0.0
 * performer-pytorch=1.1.4
 
 ## Quick start
