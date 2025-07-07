@@ -48,7 +48,7 @@ git clone https://github.com/KangBoming/BulkFormer.git
 **Step2: create and activate the environment**
 ```
 cd BulkFormer
-conda env create -f bulkformer.yml
+conda env create -f bulkformer.yaml
 conda activate bulkformer
 ```
 **Step3: download pretrained model and data**
