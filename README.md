@@ -66,7 +66,7 @@ Please follow bulkformer_extract_feature.ipynb
 ```
 
 ## Publication
-BulkFormer: A large-scale foundation model for human bulk transcriptomes
+A large-scale foundation model for human bulk transcriptomes
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](https://github.com/KangBoming/DeepAVC/blob/main/LICENSE) file for details
