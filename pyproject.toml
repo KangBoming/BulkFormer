@@ -16,6 +16,8 @@ dependencies = [
     "torchvision>=0.20.1",
     "torchaudio>=2.5.1",
     "torch-geometric>=2.6.1",
+    "torch-scatter>=2.1.2",
+    "torch-sparse>=0.6.18",
     "triton>=3.1.0",
     
     # Deep Learning Libraries
@@ -97,7 +99,6 @@ dependencies = [
 pyg-extensions = [
     "torch-cluster",
     "torch-scatter",
-    "torch-sparse",
     "torch-spline-conv",
 ]
 
@@ -123,6 +124,8 @@ build-backend = "hatchling.build"
 [tool.uv]
 # Configure index strategy to search across all indexes
 index-strategy = "unsafe-best-match"
+# Use find-links for PyG wheels (HTML page format)
+find-links = ["https://data.pyg.org/whl/torch-2.8.0+cu126.html"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["bulkformer"]
@@ -132,7 +135,7 @@ packages = ["bulkformer"]
 
 [[tool.uv.index]]
 name = "pytorch"
-url = "https://download.pytorch.org/whl/cu121"
+url = "https://download.pytorch.org/whl/cu126"
 default = false
 
 [[tool.uv.index]]

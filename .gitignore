@@ -69,3 +69,4 @@ data/high_var_gene_list.pt
 *.parquet
 *.feather
 
+output.pt

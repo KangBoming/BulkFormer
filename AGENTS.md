@@ -4,4 +4,5 @@
 
 ## Coding style
 - Use type-hints when possible
+- Use pathlib to manage files
 - Avoid relative and circular imports when possible

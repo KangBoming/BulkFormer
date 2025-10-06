@@ -99,6 +99,12 @@ Manual download:
 uv run jupyter notebook notebooks/bulkformer_extract_feature.ipynb
 ```
 
+**Step 7: Try the CLI with demo data (optional)**
+```bash
+# Extract features from the included demo dataset
+uv run bulkformer extract data/demo.csv demo_features.pt
+```
+
 ## Usage
 
 ### Using BulkFormer in Python
@@ -223,6 +229,9 @@ uv run bulkformer extract INPUT_FILE OUTPUT_FILE [OPTIONS]
 **Examples:**
 
 ```bash
+# Try it with the included demo data (recommended for testing):
+uv run bulkformer extract data/demo.csv demo_features.pt
+
 # Basic usage: extract transcriptome-level features from normalized data
 uv run bulkformer extract my_expression.csv features.pt
 
