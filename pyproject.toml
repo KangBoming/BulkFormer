@@ -1,0 +1,139 @@
+[project]
+name = "bulkformer"
+version = "0.1.0"
+description = "A large-scale foundation model for human bulk transcriptomes"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = {text = "MIT"}
+authors = [
+    {name = "Boming Kang", email = "kangbm@bjmu.edu.cn"},
+    {name = "Qinghua Cui", email = "cuiqinghua@bjmu.edu.cn"},
+]
+
+dependencies = [
+    # Core ML/Scientific Computing
+    "torch>=2.5.1",
+    "torchvision>=0.20.1",
+    "torchaudio>=2.5.1",
+    "torch-geometric>=2.6.1",
+    "triton>=3.1.0",
+    
+    # Deep Learning Libraries
+    "performer-pytorch>=1.1.4",
+    "einops>=0.8.0",
+    "axial-positional-embedding>=0.2.1",
+    "local-attention>=1.9.15",
+    "transformers>=4.48.3",
+    "safetensors>=0.5.2",
+    "tokenizers>=0.21.0",
+    
+    # Data Science
+    "numpy>=2.0.2",
+    "pandas>=2.2.3",
+    "scipy>=1.14.1",
+    "scikit-learn>=1.5.2",
+    "statsmodels>=0.14.4",
+    
+    # Visualization
+    "matplotlib>=3.9.3",
+    "seaborn>=0.13.2",
+    
+    # Bioinformatics
+    "scanpy>=1.10.4",
+    "anndata>=0.11.1",
+    "loompy>=3.0.8",
+    "rdkit>=2024.9.5",
+    
+    # ML/Data Tools
+    "datasets>=3.3.2",
+    "huggingface-hub>=0.28.1",
+    "h5py>=3.12.1",
+    
+    # Utilities
+    "tqdm>=4.67.1",
+    "joblib>=1.4.2",
+    "typer>=0.9.0",
+    "click>=8.1.8",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.3",
+    "filelock>=3.16.1",
+    "fsspec>=2024.10.0",
+    "pyarrow>=19.0.1",
+    
+    # Jupyter/IPython
+    "ipython>=9.3.0",
+    "ipykernel>=6.29.5",
+    "ipywidgets>=8.1.7",
+    "jupyter-client>=8.6.3",
+    "jupyter-core>=5.8.1",
+    "jupyterlab-widgets>=3.0.15",
+    
+    # Other Dependencies
+    "networkx>=3.4.2",
+    "umap-learn>=0.5.7",
+    "pynndescent>=0.5.13",
+    "numba>=0.60.0",
+    "llvmlite>=0.43.0",
+    "dcor>=0.6",
+    "accumulation-tree>=0.6.4",
+    "numpy-groupies>=0.11.2",
+    "session-info>=1.0.0",
+    "natsort>=8.4.0",
+    "patsy>=1.0.1",
+    "pyudorandom>=1.0.0",
+    "legacy-api-wrap>=1.4.1",
+    "tdigest>=0.5.2.2",
+    "xxhash>=3.5.0",
+    "dill>=0.3.8",
+    "multiprocess>=0.70.16",
+    "regex>=2024.11.6",
+    "aiohttp>=3.11.10",
+    "pillow>=11.0.0",
+]
+
+[project.optional-dependencies]
+# Optional PyTorch Geometric extensions for better performance
+# These require compilation and may need manual installation
+pyg-extensions = [
+    "torch-cluster",
+    "torch-scatter",
+    "torch-sparse",
+    "torch-spline-conv",
+]
+
+# Development dependencies
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+bulkformer = "bulkformer.cli.main:app"
+
+[project.urls]
+Homepage = "https://github.com/KangBoming/BulkFormer"
+Repository = "https://github.com/KangBoming/BulkFormer"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+# Configure index strategy to search across all indexes
+index-strategy = "unsafe-best-match"
+
+[tool.hatch.build.targets.wheel]
+packages = ["bulkformer"]
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121"
+default = false
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
+

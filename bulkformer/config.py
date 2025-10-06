@@ -1,3 +1,6 @@
+"""
+Default model configuration parameters
+"""
 
 model_params = {
     'dim': 640,
@@ -8,8 +11,4 @@ model_params = {
     'full_head': 8,
     'gene_length': 20010
 }
-
-
-
-
 

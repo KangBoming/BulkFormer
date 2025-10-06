@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# uv
+.uv/
+uv.lock
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Temporary directories
+y/
+
+# Downloaded model files (large)
+model/*.pt
+model/*.pth
+model/*.bin
+model/*.h5
+model/*.ckpt
+
+# Downloaded data files (large)
+data/*.pt
+data/*.pth
+data/demo.csv
+data/esm2_feature_concat.pt
+data/G_gtex.pt
+data/G_gtex_weight.pt
+data/high_var_gene_list.pt
+
+# Other data formats
+*.tsv
+*.parquet
+*.feather
+

@@ -29,40 +29,114 @@ The best-performing values for each task are highlighted in bold.
 NA*: Geneformer, GeneCompass, and scGPT were not directly pretrained to model gene expression values, and therefore cannot perform transcriptome imputation tasks. 
 
 
-## Main requirements
-* python=3.12.7
-* pytorch=2.5.1
-* scikit-learn=1.5.2
-* pandas=2.2.3
-* numpy=2.0.2
-* performer-pytorch=1.1.4
+## Requirements
+* Python 3.12.7
+* PyTorch 2.5.1+ (with CUDA 12 support)
+* scikit-learn 1.5+
+* pandas 2.2+
+* numpy 2.0+
+* performer-pytorch 1.1.4+
 
-## Quick start
-**Step1: clone the repo**
-```
-mkdir ./BulkFormer
-cd BulkFormer
+All dependencies are managed via `pyproject.toml` and installed automatically with UV.
+
+## Quick Start
+
+**Step 1: Clone the repository**
+```bash
 git clone https://github.com/KangBoming/BulkFormer.git
-```
-**Step2: create and activate the environment**
-```
 cd BulkFormer
-conda env create -f bulkformer.yaml
-conda activate bulkformer
-```
-**Step3: download pretrained model and data**
-```
-cd BulkFormer/model
-Please follow the README.md file to download pretrained BulkFormer model.
-
-cd BulkFormer/data
-Please follow the README.md file to download related data.
 ```
 
-**Step4: model infernece**
+**Step 2: Install UV (if not already installed)**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-cd BulkFormer
-Please follow bulkformer_extract_feature.ipynb
+
+**Step 3: Install dependencies**
+```bash
+uv sync
+```
+
+This will create a virtual environment in `.venv/` and install all required packages.
+
+**Step 4: Verify installation (optional)**
+```bash
+uv run bulkformer verify
+```
+
+**Step 5: Download pretrained model and data**
+
+Using the automated downloader (recommended):
+```bash
+# Download everything (model + data, ~7.4 GB total)
+uv run bulkformer download all
+
+# Or download separately:
+uv run bulkformer download model  # Download model only (~568 MB)
+uv run bulkformer download data   # Download data only (~244 MB)
+
+# List available files
+uv run bulkformer download list
+
+# Show Zenodo record info
+uv run bulkformer download info
+```
+
+Manual download:
+```bash
+# Visit https://doi.org/10.5281/zenodo.15559368
+# Download files to model/ and data/ directories
+# See model/README.md and data/README.md for details
+```
+
+**Step 6: Run model inference**
+```bash
+uv run jupyter notebook notebooks/bulkformer_extract_feature.ipynb
+```
+
+## Usage
+
+### Using BulkFormer in Python
+
+```python
+from bulkformer import BulkFormer, model_params
+from bulkformer.models import GBFormer, PositionalExprEmbedding
+
+# Load and use the model
+# ... your code here
+```
+
+### Running Scripts
+
+```bash
+# Use uv run
+uv run python your_script.py
+
+# Or activate environment
+source .venv/bin/activate
+python your_script.py
+```
+
+### CLI Tools
+
+```bash
+# Verify installation
+uv run bulkformer verify
+
+# Download files
+uv run bulkformer download all
+
+# Get help
+uv run bulkformer --help
+uv run bulkformer download --help
+```
+
+## Managing Dependencies
+
+```bash
+uv add package-name      # Add a package
+uv remove package-name   # Remove a package
+uv sync                  # Update dependencies
 ```
 
 ## Publication
