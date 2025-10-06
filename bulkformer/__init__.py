@@ -2,12 +2,11 @@
 BulkFormer: A large-scale foundation model for human bulk transcriptomes
 """
 
-from bulkformer.models.model import BulkFormer
-from bulkformer.models.encoder import GBFormer
-from bulkformer.models.rope import PositionalExprEmbedding
+# Import in dependency order: config and dependencies first, then models
 from bulkformer.config import model_params
-
-__version__ = "0.1.0"
+from bulkformer.models.rope import PositionalExprEmbedding
+from bulkformer.models.encoder import GBFormer
+from bulkformer.models.model import BulkFormer
 
 __all__ = [
     "BulkFormer",

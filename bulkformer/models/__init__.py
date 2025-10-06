@@ -2,9 +2,10 @@
 Model architectures for BulkFormer
 """
 
-from bulkformer.models.model import BulkFormer
-from bulkformer.models.encoder import GBFormer
+# Import in dependency order: dependencies first, then model
 from bulkformer.models.rope import PositionalExprEmbedding
+from bulkformer.models.encoder import GBFormer
+from bulkformer.models.model import BulkFormer
 
 __all__ = [
     "BulkFormer",
