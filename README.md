@@ -72,7 +72,7 @@ A large-scale foundation model for human bulk transcriptomes
 This project is licensed under the MIT License - see the [LICENSE.txt](https://github.com/KangBoming/DeepAVC/blob/main/LICENSE) file for details
 
 ## Contact
-Please feel free to contact us for any further queations
+Please feel free to contact us for any further questions
 
 Boming Kang <kangbm@bjmu.edu.cn>
 
