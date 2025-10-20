@@ -29,40 +29,245 @@ The best-performing values for each task are highlighted in bold.
 NA*: Geneformer, GeneCompass, and scGPT were not directly pretrained to model gene expression values, and therefore cannot perform transcriptome imputation tasks. 
 
 
-## Main requirements
-* python=3.12.7
-* pytorch=2.5.1
-* scikit-learn=1.5.2
-* pandas=2.2.3
-* numpy=2.0.2
-* performer-pytorch=1.1.4
+## Requirements
+* Python 3.12.7
+* PyTorch 2.5.1+ (with CUDA 12 support)
+* scikit-learn 1.5+
+* pandas 2.2+
+* numpy 2.0+
+* performer-pytorch 1.1.4+
 
-## Quick start
-**Step1: clone the repo**
-```
-mkdir ./BulkFormer
-cd BulkFormer
+All dependencies are managed via `pyproject.toml` and installed automatically with UV.
+
+## Quick Start
+
+**Step 1: Clone the repository**
+```bash
 git clone https://github.com/KangBoming/BulkFormer.git
-```
-**Step2: create and activate the environment**
-```
 cd BulkFormer
-conda env create -f bulkformer.yaml
-conda activate bulkformer
-```
-**Step3: download pretrained model and data**
-```
-cd BulkFormer/model
-Please follow the README.md file to download pretrained BulkFormer model.
-
-cd BulkFormer/data
-Please follow the README.md file to download related data.
 ```
 
-**Step4: model infernece**
+**Step 2: Install UV (if not already installed)**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-cd BulkFormer
-Please follow bulkformer_extract_feature.ipynb
+
+**Step 3: Install dependencies**
+```bash
+uv sync
+```
+
+This will create a virtual environment in `.venv/` and install all required packages.
+
+> **Note:** If you encounter `ImportError: 'SparseTensor' requires 'torch-sparse'`, you may need to install optional PyTorch Geometric extensions:
+> ```bash
+> uv pip install torch-sparse torch-scatter torch-cluster torch-spline-conv -f https://data.pyg.org/whl/torch-2.5.1+cu121.html
+> ```
+
+**Step 4: Verify installation (optional)**
+```bash
+uv run bulkformer verify
+```
+
+**Step 5: Download pretrained model and data**
+
+Using the automated downloader (recommended):
+```bash
+# Download everything (model + data, ~7.4 GB total)
+uv run bulkformer download all
+
+# Or download separately:
+uv run bulkformer download model  # Download model only (~568 MB)
+uv run bulkformer download data   # Download data only (~244 MB)
+
+# List available files
+uv run bulkformer download list
+
+# Show Zenodo record info
+uv run bulkformer download info
+```
+
+Manual download:
+```bash
+# Visit https://doi.org/10.5281/zenodo.15559368
+# Download files to model/ and data/ directories
+# See model/README.md and data/README.md for details
+```
+
+**Step 6: Run model inference**
+```bash
+uv run jupyter notebook notebooks/bulkformer_extract_feature.ipynb
+```
+
+**Step 7: Try the CLI with demo data (optional)**
+```bash
+# Extract features from the included demo dataset
+uv run bulkformer extract data/demo.csv demo_features.pt
+```
+
+## Usage
+
+### Using BulkFormer in Python
+
+BulkFormer can extract three types of features from bulk RNA-seq data:
+
+1. **Transcriptome-level embeddings**: Sample-level feature vectors for downstream tasks
+2. **Gene-level embeddings**: Per-gene representations fused with ESM2 protein embeddings
+3. **Expression imputation**: Model-predicted expression values for missing genes
+
+#### Basic Workflow
+
+```python
+import torch
+import pandas as pd
+from torch_geometric.typing import SparseTensor
+from bulkformer import BulkFormer, model_params
+
+# 1. Load graph and gene embeddings
+device = 'cuda'  # or 'cpu'
+graph = torch.load('data/G_gtex.pt', weights_only=False)
+weights = torch.load('data/G_gtex_weight.pt', weights_only=False)
+graph = SparseTensor(row=graph[1], col=graph[0], value=weights).t().to(device)
+gene_emb = torch.load('data/esm2_feature_concat.pt', weights_only=False)
+
+# 2. Initialize model
+model_params['graph'] = graph
+model_params['gene_emb'] = gene_emb
+model = BulkFormer(**model_params).to(device)
+
+# 3. Load pretrained checkpoint
+ckpt = torch.load('model/Bulkformer_ckpt_epoch_29.pt', weights_only=False)
+# Remove 'module.' prefix if present
+state_dict = {k.replace('module.', ''): v for k, v in ckpt.items()}
+model.load_state_dict(state_dict)
+
+# 4. Prepare your expression data (log-transformed TPM)
+# Your data should be a pandas DataFrame with samples as rows and genes as columns
+expr_df = pd.read_csv('your_data.csv')
+
+# 5. Align to BulkFormer gene list (handles missing genes)
+gene_info = pd.read_csv('data/bulkformer_gene_info.csv')
+gene_list = gene_info['ensg_id'].to_list()
+# ... alignment code (see notebook for details)
+
+# 6. Extract features
+# See notebooks/bulkformer_extract_feature.ipynb for complete examples
+```
+
+#### Data Preparation Tips
+
+- **Input format**: Log-transformed TPM values (normalized expression)
+- **Gene identifiers**: Ensembl Gene IDs (ENSG)
+- **Missing genes**: Automatically handled with placeholder imputation
+- **Count normalization**: Use the provided `normalize_data()` function for raw counts
+
+### Running Python Scripts
+
+There are two ways to run your Python scripts:
+
+```bash
+# Option 1: Use uv run (recommended)
+uv run python your_analysis.py
+
+# Option 2: Activate virtual environment first
+source .venv/bin/activate
+python your_analysis.py
+```
+
+### CLI Tools
+
+BulkFormer provides command-line tools for setup, verification, and feature extraction:
+
+```bash
+# Verify installation and check dependencies
+uv run bulkformer verify
+
+# Download model and data files
+uv run bulkformer download all      # Download everything
+uv run bulkformer download model    # Model only
+uv run bulkformer download data     # Data only
+uv run bulkformer download list     # List available files
+uv run bulkformer download info     # Show Zenodo record info
+
+# Extract features from expression data (NEW!)
+uv run bulkformer extract input.csv output.pt                    # Transcriptome-level embeddings
+uv run bulkformer extract input.csv output.pt --counts           # Normalize raw counts first
+uv run bulkformer extract input.csv output.pt --type gene_level  # Gene-level embeddings
+uv run bulkformer extract input.csv output.csv --type expression_imputation  # Impute expression
+
+# Get help
+uv run bulkformer --help
+uv run bulkformer download --help
+uv run bulkformer extract --help
+```
+
+#### Feature Extraction CLI Options
+
+The `bulkformer extract` command provides a simple way to process your expression data:
+
+```bash
+uv run bulkformer extract INPUT_FILE OUTPUT_FILE [OPTIONS]
+```
+
+**Arguments:**
+- `INPUT_FILE`: CSV file with samples as rows and genes (Ensembl IDs) as columns
+- `OUTPUT_FILE`: Where to save extracted features (.pt for tensors, .csv for expression)
+
+**Options:**
+- `--type`, `-t`: Feature type (default: `transcriptome_level`)
+  - `transcriptome_level`: Sample-level embeddings for downstream ML tasks
+  - `gene_level`: Per-gene embeddings fused with ESM2 protein embeddings
+  - `expression_imputation`: Predict expression values for missing genes
+- `--aggregate`, `-a`: Aggregation method for transcriptome-level (default: `max`)
+  - `max`, `mean`, `median`, or `all` (combines all three)
+- `--counts`, `-c`: Input is raw count data (will normalize to log-TPM)
+- `--batch-size`, `-b`: Batch size for inference (default: 16)
+- `--device`, `-d`: Device to use: `cuda` or `cpu` (default: `cuda`)
+- `--model-dir`: Directory containing model checkpoint (default: `model`)
+- `--data-dir`: Directory containing data files (default: `data`)
+
+**Examples:**
+
+```bash
+# Try it with the included demo data (recommended for testing):
+uv run bulkformer extract data/demo.csv demo_features.pt
+
+# Basic usage: extract transcriptome-level features from normalized data
+uv run bulkformer extract my_expression.csv features.pt
+
+# Process raw count data (will normalize automatically)
+uv run bulkformer extract raw_counts.csv features.pt --counts
+
+# Extract gene-level embeddings with mean aggregation
+uv run bulkformer extract my_data.csv gene_features.pt --type gene_level --aggregate mean
+
+# Impute missing gene expression and save as CSV
+uv run bulkformer extract partial_data.csv imputed.csv --type expression_imputation
+
+# Use CPU instead of GPU
+uv run bulkformer extract my_data.csv features.pt --device cpu
+```
+
+### Example Notebook
+
+For a complete, runnable example, see:
+```bash
+uv run jupyter notebook notebooks/bulkformer_extract_feature.ipynb
+```
+
+This notebook demonstrates:
+- Loading and initializing the model
+- Normalizing raw count data
+- Aligning genes to the BulkFormer gene space
+- Extracting transcriptome-level and gene-level features
+- Expression imputation for missing genes
+
+## Managing Dependencies
+
+```bash
+uv add package-name      # Add a package
+uv remove package-name   # Remove a package
+uv sync                  # Update dependencies
 ```
 
 ## Publication

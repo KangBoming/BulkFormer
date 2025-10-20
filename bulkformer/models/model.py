@@ -1,21 +1,22 @@
 import torch
 import torch.nn as nn
-from utils.Encoder_block import GBFormer
-from utils.Rope import PositionalExprEmbedding
+from bulkformer.models.encoder import GBFormer
+from bulkformer.models.rope import PositionalExprEmbedding
 
 
 class BulkFormer(nn.Module):
-    def __init__(self, 
-                 dim, 
-                 graph, 
-                 gene_emb, 
-                 gene_length,
-                 bin_head=4, 
-                 full_head=4, 
-                 bins=10,
-                 gb_repeat=3,
-                 p_repeat=1,
-                ):
+    def __init__(
+        self,
+        dim: int,
+        graph: torch.Tensor,
+        gene_emb: torch.Tensor,
+        gene_length: int,
+        bin_head: int = 4,
+        full_head: int = 4,
+        bins: int = 10,
+        gb_repeat: int = 3,
+        p_repeat: int = 1,
+    ):
         super().__init__()
         
         self.dim = dim
@@ -67,7 +68,7 @@ class BulkFormer(nn.Module):
             nn.ReLU(),
         )
 
-    def forward(self, x, repr_layers=None):
+    def forward(self, x: torch.Tensor, repr_layers: list[int] | None = None) -> torch.Tensor | tuple[torch.Tensor, dict]:
         b, g = x.shape
         
         x = self.expr_emb(x) + self.gene_emb_proj(self.gene_emb) + self.ae_enc(x).unsqueeze(1)
@@ -89,3 +90,4 @@ class BulkFormer(nn.Module):
             return x, hidden
         else:
             return x
+
