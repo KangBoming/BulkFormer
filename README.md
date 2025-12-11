@@ -57,7 +57,7 @@ Large language models have emerged as powerful foundation models that are transf
 ---
 
 
-## BulkFormer Model Variants
+## 🏋️ BulkFormer Model Variants
 
 We trained and released **five BulkFormer models** at different parameter scales to support diverse research and deployment scenarios.
 
@@ -115,7 +115,7 @@ Please follow bulkformer_extract_feature.ipynb
 ## 📄 Publication
 A large-scale foundation model for human bulk transcriptomes
 
-## License
+## 📜 License
 This project is licensed under the MIT License - see the [LICENSE.txt](https://github.com/KangBoming/DeepAVC/blob/main/LICENSE) file for details
 
 ## 📫 Contact
