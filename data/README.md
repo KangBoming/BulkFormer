@@ -2,7 +2,7 @@
 
 The following **preprocessed resource files** required for running BulkFormer demos and scripts can be downloaded from **Zenodo**:
 
-🔗 **Latest Zenodo record (always use the newest version):**   https://doi.org/10.5281/zenodo.15559368  
+🔗 **Latest Zenodo record (always use the newest version):**   https://doi.org/10.5281/zenodo.15744294
 
 **Available files:**
 - `G_gtex.pt`  
