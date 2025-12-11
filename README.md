@@ -10,7 +10,7 @@ After careful reconsideration, we decided to **remove the compound perturbation 
 ### 🔹 2. Updated model feature extraction utilities  
 The file `bulkformer_extract_feature.py` has been streamlined and improved:
 - Added support for **ESM2 fusion** at the gene-level feature stage  
-- Improved **GPU memory efficiency** for large-cohort inference
+- Improved **GPU memory efficiency** for large-cohort inference  
 
 ### 🔹 3. Updated model architecture implementation  
 For each input sample, we now compute and feed three explicit **global summary features** into the model:  
@@ -18,6 +18,9 @@ For each input sample, we now compute and feed three explicit **global summary f
   - **Mean gene expression level**  
   - **Proportion of non-zero genes**  
 These summary statistics help BulkFormer better model heterogeneous bulk RNA-seq samples, especially when gene coverage or sparsity varies across datasets.
+
+**All previous code files, data files and  pretrained model weights have also been comprehensively updated—please refer to the latest release for the correct and up-to-date version of BulkFormer.**
+
 
 
 
