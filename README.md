@@ -63,7 +63,7 @@ We trained and released **five BulkFormer models** at different parameter scales
 
 | Model Name          | Parameters | Hidden Dim | Layers | Heads | Download   |
 |---------------------|-----------:|-----------:|-------:|------:|-----------:|
-| **BulkFormer-37M**  | 37M        | 128        | 1      | 8     | [Download](#) |
+| **BulkFormer-37M**  | 37M        | 128        | 1      | 8     | [Download](#https://drive.google.com/file/d/1qY2qaXfKfDot9EMcOF9gr8T0jghrH7km/view?usp=drive_link) |
 | **BulkFormer-50M**  | 50M        | 256        | 2      | 8     | [Download](#) |
 | **BulkFormer-93M**  | 93M        | 512        | 6      | 8     | [Download](#) |
 | **BulkFormer-127M** | 127M       | 640        | 8      | 8     | [Download](#) |
@@ -75,6 +75,7 @@ We trained and released **five BulkFormer models** at different parameter scales
 *Figure: Scaling law fitting curve across BulkFormer model scales.*
 
 
+---
 
 ## 📦 Main requirements
 * python=3.12.7
