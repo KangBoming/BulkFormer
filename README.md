@@ -59,7 +59,7 @@ We trained and released <b>five BulkFormer models</b> at different parameter sca
 
 <table>
 <tr>
-<td width="55%">
+<td width="50%">
 
 <table>
 <thead>
@@ -88,9 +88,8 @@ We trained and released <b>five BulkFormer models</b> at different parameter sca
 
 </td>
 
-<td width="45%" align="center">
+<td width="50%" align="center">
 
-<h3>Scaling Law Fitting Curve</h3>
 
 <img src="scaling_law_log_fit_curve.png" alt="Scaling Law Curve" width="95%">
 
