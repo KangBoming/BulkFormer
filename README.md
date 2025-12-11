@@ -1,13 +1,11 @@
-# BulkFormer
-BulkFormer: A large-scale foundation model for human bulk transcriptomes
-
 
 
 ## Abstract
-Large language models (LLMs) have become foundation models leading to breakthroughs in the fields of transcriptome modeling. However, existing RNA-seq foundation models are predominantly pretrained on sparse scRNA-seq data, with few designed specifically for bulk RNA-seq. Here we proposed BulkFormer, a large-scale foundation model for bulk transcriptomes, with 150 million parameters covering about 20,000 protein-coding genes, pretrained on over 500,000 human bulk transcriptomic profiles. BulkFormer features a hybrid encoder architecture combining a graph neural network to capture explicit gene-gene interactions and a performer module to model global expression dependencies. As a result, BulkFormer consistently outperforms existing baseline models in diverse downstream tasks, including transcriptome imputation, disease annotation, prognosis modeling, drug response prediction, compound perturbation simulation, and gene essentiality scoring. Notably, BulkFormer enhances the discovery of clinically relevant biomarkers and reveals latent disease mechanisms by imputing biologically meaningful gene expression. All these results show the power of BulkFormer for bulk transcriptome modeling and analysis. 
+Large language models have emerged as powerful foundation models that are transforming transcriptome analysis. However, existing RNA-seq foundation models are all pretrained on sparse scRNA-seq data, which typically detects only ~3000 genes per cell. This thus creates a critical gap in models (especially clinical models) specifically designed for bulk transcriptomes, a fundamentally different modality capable of profiling ~16,000 genes per sample. Here we propose BulkFormer, a large-scale foundation model for bulk transcriptome analysis. With ~150 million parameters covering about 20,000 protein-coding genes, BulkFormer is pretrained on over 500,000 human bulk RNA-seq profiles. BulkFormer incorporates a hybrid encoder architecture, combining a graph neural network to capture explicit gene-gene interactions and a performer module to model global expression dependencies. As a result, despite incurring substantially lower training costs than single-cell foundation models, BulkFormer consistently outperforms them in five downstream tasks: transcriptome imputation, disease annotation, prognosis modeling, drug response prediction, and gene essentiality prediction. Moreover, through a series of experiments, we demonstrate that the modality of the pretraining data exerts a critical influence on foundation model performance. Collectively, these results demonstrate BulkFormer’s power as a versatile and robust framework for bulk transcriptome modeling and biomedical discovery.
+
 
 ## Overview
-![Overview](BulkFormer_overview.png)
+![Overview](bulkformer_overview.png)
 
 
 ## Results
