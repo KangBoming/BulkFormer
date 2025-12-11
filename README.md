@@ -55,49 +55,22 @@ Large language models have emerged as powerful foundation models that are transf
 
 
 ## BulkFormer Model Variants
-We trained and released <b>five BulkFormer models</b> at different parameter scales to support diverse research and deployment scenarios.
 
-<table>
-<tr>
-<td width="50%">
+We trained and released **five BulkFormer models** at different parameter scales to support diverse research and deployment scenarios.
 
-<table>
-<thead>
-<tr>
-<th>Model Name</th><th>Parameters</th><th>Hidden Dim</th><th>Layers</th><th>Heads</th><th>Download</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><b>BulkFormer-37M</b></td><td>37M</td><td>128</td><td>1</td><td>8</td><td><a href="#">Download</a></td>
-</tr>
-<tr>
-<td><b>BulkFormer-50M</b></td><td>50M</td><td>256</td><td>2</td><td>8</td><td><a href="#">Download</a></td>
-</tr>
-<tr>
-<td><b>BulkFormer-93M</b></td><td>93M</td><td>512</td><td>6</td><td>8</td><td><a href="#">Download</a></td>
-</tr>
-<tr>
-<td><b>BulkFormer-127M</b></td><td>127M</td><td>640</td><td>8</td><td>8</td><td><a href="#">Download</a></td>
-</tr>
-<tr>
-<td><b>BulkFormer-147M</b></td><td>147M</td><td>640</td><td>12</td><td>8</td><td><a href="#">Download</a></td>
-</tr>
-</tbody>
-</table>
-
-</td>
-
-<td width="50%" align="center">
+| Model Name          | Parameters | Hidden Dim | Layers | Heads | Download   |
+|---------------------|-----------:|-----------:|-------:|------:|-----------:|
+| **BulkFormer-37M**  | 37M        | 128        | 1      | 8     | [Download](#) |
+| **BulkFormer-50M**  | 50M        | 256        | 2      | 8     | [Download](#) |
+| **BulkFormer-93M**  | 93M        | 512        | 6      | 8     | [Download](#) |
+| **BulkFormer-127M** | 127M       | 640        | 8      | 8     | [Download](#) |
+| **BulkFormer-147M** | 147M       | 640        | 12     | 8     | [Download](#) |
 
 
-<img src="scaling_law_log_fit_curve.png" alt="Scaling Law Curve" width="95%">
+![Scaling law fit curve](scaling_law_log_fit_curve.png)
 
-</td>
-</tr>
-</table>
+*Figure: Scaling law fitting curve across BulkFormer model scales.*
 
----
 
 
 ## Main requirements
