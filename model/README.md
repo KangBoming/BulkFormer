@@ -1,6 +1,14 @@
-The pretrained BulkFormer can be downloaded from Zenodo (https://doi.org/10.5281/zenodo.15559368):
+## 📥 Download Pretrained BulkFormer
 
-* Bulkformer_ckpt_epoch_29.pt
+The pretrained BulkFormer model is hosted on **Google Drive** for fast and reliable access:
+
+🔗 **Google Drive Download:**  
+https://drive.google.com/your_bulkformer_checkpoint_link
+
+**Included checkpoint:**
+- `Bulkformer_ckpt_epoch_29.pt`
+
+Please ensure you download the latest version, as all model files, code, and data have been fully updated in this release.
 
 
 
