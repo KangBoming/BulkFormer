@@ -5,11 +5,14 @@ The following **preprocessed resource files** required for running BulkFormer de
 🔗 **Latest Zenodo record (always use the newest version):**   https://doi.org/10.5281/zenodo.15744294
 
 **Available files:**
-- `G_gtex.pt`  
-- `G_gtex_weight.pt`  
+- `PreBULK.h5ad.zip(Pretraining data for BulkFormer)`
+- `bulkformer_gene_info.csv`
+- `G_tcga.pt`  
+- `G_tcga_weight.pt`  
 - `esm2_feature_concat.pt`  
-- `demo.csv`  
-- `high_var_gene_list.pt`
+- `demo_count_adata.h5ad`  
+- `interested_gene_list.pt`
+- `Downtask-related data`
 
 
 > ⚠️ **Important:** All of the above files have been **updated** in the latest release.
