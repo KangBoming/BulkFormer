@@ -2,8 +2,7 @@
 
 The pretrained **BulkFormer family** (five parameter scales) is available from **Google Drive**:
 
-🔗 **Google Drive folder (all checkpoints):**  
-https://drive.google.com/your_bulkformer_folder_link
+
 
 > Please make sure to use the latest release. All model files, code, and data have been updated in this version.
 
