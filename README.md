@@ -114,7 +114,24 @@ Please follow bulkformer_extract_feature.ipynb
 ```
 
 ## 📄 Publication
-A large-scale foundation model for human bulk transcriptomes
+If you use **BulkFormer** in your work, please cite:
+
+Kang, B., Fan, R., Yi, M., Cui, C., & Cui, Q. (2026). **BulkFormer: A large-scale foundation model for bulk transcriptomes**. *Cell Systems*, 101657. https://doi.org/10.1016/j.cels.2026.101657
+
+ScienceDirect: https://www.sciencedirect.com/science/article/pii/S2405471226001390
+
+```bibtex
+@article{kang2026bulkformer,
+  title = {BulkFormer: A large-scale foundation model for bulk transcriptomes},
+  author = {Kang, Boming and Fan, Rui and Yi, Meizheng and Cui, Chunmei and Cui, Qinghua},
+  journal = {Cell Systems},
+  year = {2026},
+  pages = {101657},
+  issn = {2405-4712},
+  doi = {10.1016/j.cels.2026.101657},
+  url = {https://www.sciencedirect.com/science/article/pii/S2405471226001390}
+}
+```
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE.txt](https://github.com/KangBoming/DeepAVC/blob/main/LICENSE) file for details
