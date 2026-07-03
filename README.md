@@ -1,4 +1,4 @@
-# BulkFormer: A Large-Scale Foundation Model for Human Bulk Transcriptomes
+# BulkFormer: A large-scale foundation model for bulk transcriptomes
 
 
 
