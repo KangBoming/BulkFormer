@@ -60,23 +60,32 @@ The protocol and full precision scores are recorded in [v1plus_phenotype_metrics
    conda activate bulkformer-v1plus
    ```
 
-2. Download **all five parts**, `.zip.001` through `.zip.005`, from the [V1 Plus Google Drive folder](https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2) into `model/v1plus_download/`. Preserve the filenames. If Drive downloads the folder as an outer ZIP, extract that ZIP first and place the five parts directly in this directory.
+2. Download the complete [model.pt](https://drive.google.com/file/d/1ly4CNE6XHqHKSP1a5c0UGUeaSVC0Was1/view?usp=drivesdk) and the five resource files from the [V1 Plus Google Drive folder](https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2) into `model/bulkformer_v1plus/`. The folder also provides the environment YAML and this model introduction. If Drive wraps a folder download in a ZIP, extract it first so the six files are directly inside the model directory.
 
-3. Open [bulkformer_v1plus_extract_feature.ipynb](../bulkformer_v1plus_extract_feature.ipynb) from the repository root and run its cells in order. The notebook verifies each part, joins and verifies the complete archive, and extracts it into `model/bulkformer_v1plus/`. A complete ZIP can also be passed to `prepare_v1plus_bundle`.
+   | File | Purpose |
+   |---|---|
+   | `model.pt` | Complete encoder and expression-head checkpoint |
+   | `model_config.json` | Architecture and input configuration |
+   | `gene_vocab.csv` | Ordered 19,973-gene vocabulary, symbols and gene lengths |
+   | `edge_index.pt` | Weighted graph edge indices |
+   | `edge_weight.pt` | Graph edge weights |
+   | `manifest.json` | Release metadata and resource checksums |
+
+3. Open [bulkformer_v1plus_extract_feature.ipynb](../bulkformer_v1plus_extract_feature.ipynb) from the repository root and run its cells in order. The notebook verifies the complete checkpoint and all resource files before loading them.
 
    ```python
    from utils.v1plus import prepare_v1plus_bundle, load_v1plus_model
-   model_dir = prepare_v1plus_bundle("model/v1plus_download", "model")
+   model_dir = prepare_v1plus_bundle("model/bulkformer_v1plus", "model")
    model, gene_vocab, manifest = load_v1plus_model(model_dir, device="cuda")
    ```
 
-The complete archive is **420,298,937 bytes**. Its SHA256 is:
+`model.pt` is one complete file, **406,165,934 bytes**, with SHA256:
 
 ```text
-eeab02ac99ce3e2f0187ff988906a9df705fa5fc25eda2174957d8e4c7d456b5
+0fb65ec123386ef753651cfcc43e2a64728c719307fe565a5ffe16f5d8cf3cfa
 ```
 
-The download manifest [v1plus_downloads.json](v1plus_downloads.json) records part sizes and SHA256 values. The extracted bundle contains `model.pt`, `model_config.json`, `gene_vocab.csv`, `edge_index.pt`, `edge_weight.pt`, and `manifest.json`. It includes model tensors and plain metadata and is loaded with `weights_only=True`; optimizer states and training samples are excluded. All 427 saved model tensors were verified identical to the retained training checkpoint.
+The download manifest [v1plus_downloads.json](v1plus_downloads.json) records the size and SHA256 of all six files. `prepare_v1plus_bundle` verifies a download directory in place, or copies its verified contents to `model/bulkformer_v1plus/` when a different download directory is supplied. The checkpoint includes model tensors and plain metadata and is loaded with `weights_only=True`; optimizer states and training samples are excluded. All 427 saved model tensors were verified identical to the retained training checkpoint.
 
 ## Input and output conventions
 

@@ -25,8 +25,8 @@ We trained and released **five BulkFormer models** at different parameter scales
 
 | Model | Parameters | Hidden Dim | Layers | Heads | Download |
 |---|---:|---:|---:|---:|---|
-| **BulkFormer V1 Plus** | 101.3M | 768 | 12 | 12 | [Google Drive](https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2) |
+| **BulkFormer V1 Plus** | 101.3M | 768 | 12 | 12 | [Weights](https://drive.google.com/file/d/1ly4CNE6XHqHKSP1a5c0UGUeaSVC0Was1/view?usp=drivesdk) / [Resources](https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2) |
 
-See [V1_PLUS.md](V1_PLUS.md) for the model introduction and evaluation. Download all five numbered archive parts into `model/v1plus_download/`, then run [bulkformer_v1plus_extract_feature.ipynb](../bulkformer_v1plus_extract_feature.ipynb). It verifies, joins, and extracts the release into `model/bulkformer_v1plus/`.
+See [V1_PLUS.md](V1_PLUS.md) for the model introduction and evaluation. Download `model.pt`, `model_config.json`, `gene_vocab.csv`, `edge_index.pt`, `edge_weight.pt`, and `manifest.json` from the model's Google Drive folder into `model/bulkformer_v1plus/`, then run [bulkformer_v1plus_extract_feature.ipynb](../bulkformer_v1plus_extract_feature.ipynb).
 
-The bundle includes the V1 Plus weights, configuration, 19,973-gene vocabulary with gene lengths, and weighted graph. Part checksums are listed in [v1plus_downloads.json](v1plus_downloads.json).
+The checkpoint is one complete `model.pt` file. Its configuration, 19,973-gene vocabulary with gene lengths, weighted graph, and manifest are separate files in the same Google Drive folder. File checksums are listed in [v1plus_downloads.json](v1plus_downloads.json).

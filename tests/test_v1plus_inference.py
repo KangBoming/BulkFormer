@@ -4,7 +4,6 @@ import hashlib
 import json
 import tempfile
 import unittest
-import zipfile
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -80,37 +79,32 @@ class InputTests(unittest.TestCase):
 
 
 class DownloadTests(unittest.TestCase):
-    def test_verified_join_corruption_and_existing_directory(self):
+    def test_complete_files_corruption_missing_and_existing_directory(self):
         with tempfile.TemporaryDirectory() as root:
             root = Path(root)
-            archive = root / 'release.zip'
-            with zipfile.ZipFile(archive, 'w') as handle:
-                for name in ['model.pt', 'model_config.json', 'gene_vocab.csv',
-                             'edge_index.pt', 'edge_weight.pt', 'manifest.json']:
-                    handle.writestr('bulkformer_v1plus/' + name, b'test')
-            data = archive.read_bytes()
-            manifest = {'format_version': 1, 'archive': archive.name, 'bytes': len(data),
-                        'sha256': hashlib.sha256(data).hexdigest(), 'parts': []}
-            parts = root / 'parts'
-            parts.mkdir()
-            for i, block in enumerate([data[:100], data[100:]], 1):
-                name = f'release.zip.{i:03d}'
-                (parts / name).write_bytes(block)
-                manifest['parts'].append({'name': name, 'bytes': len(block),
-                                         'sha256': hashlib.sha256(block).hexdigest()})
+            downloads = root / 'downloads'
+            downloads.mkdir()
+            manifest = {'format_version': 2, 'files': {}}
+            for name in ['model.pt', 'model_config.json', 'gene_vocab.csv',
+                         'edge_index.pt', 'edge_weight.pt', 'manifest.json']:
+                (downloads / name).write_bytes(b'test')
+                manifest['files'][name] = {'bytes': 4,
+                                          'sha256': hashlib.sha256(b'test').hexdigest()}
             metadata = root / 'downloads.json'
             metadata.write_text(json.dumps(manifest))
-            destination = prepare_v1plus_bundle(parts, root / 'output', metadata)
+            destination = prepare_v1plus_bundle(downloads, root / 'output', metadata)
             self.assertEqual((destination / 'model.pt').read_bytes(), b'test')
+            self.assertEqual(prepare_v1plus_bundle(destination, root / 'output', metadata), destination)
             with self.assertRaises(FileExistsError):
-                prepare_v1plus_bundle(parts, root / 'output', metadata)
-            (parts / 'release.zip.002').write_bytes(b'corrupt')
+                prepare_v1plus_bundle(downloads, root / 'output', metadata)
+            (downloads / 'model.pt').write_bytes(b'bad!')
             with self.assertRaises(ValueError):
-                prepare_v1plus_bundle(parts, root / 'bad', metadata)
+                prepare_v1plus_bundle(downloads, root / 'bad', metadata)
             self.assertFalse((root / 'bad' / 'bulkformer_v1plus').exists())
-            (parts / 'release.zip.002').unlink()
+            (downloads / 'model.pt').write_bytes(b'test')
+            (downloads / 'model_config.json').unlink()
             with self.assertRaises(FileNotFoundError):
-                prepare_v1plus_bundle(parts, root / 'missing', metadata)
+                prepare_v1plus_bundle(downloads, root / 'missing', metadata)
 
 
 if __name__ == '__main__':

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 import tempfile
-import zipfile
 from pathlib import Path
 
 import numpy as np
@@ -25,61 +25,54 @@ def _sha256(path: Path) -> str:
 
 
 def prepare_v1plus_bundle(download_path, output_dir='model', download_manifest=None):
-    """Verify and extract the release ZIP or its five Google Drive parts.
+    """Verify the complete checkpoint and its five accompanying resource files.
 
-    ``download_path`` is a ZIP file or a directory containing every numbered
-    part. Preserve the download names. Parts are joined in manifest order and
-    checked against the published SHA256 before extraction. An existing model
-    directory is never replaced.
+    ``download_path`` is a directory containing the six Google Drive files.
+    If it is already ``output_dir/bulkformer_v1plus``, verify it in place.
+    Otherwise copy the verified files into that directory atomically. An
+    existing, different model directory is never replaced.
     """
     manifest_path = Path(download_manifest) if download_manifest else (
         Path(__file__).resolve().parents[2] / 'model' / 'v1plus_downloads.json'
     )
     metadata = json.loads(manifest_path.read_text())
-    if metadata.get('format_version') != 1:
+    if metadata.get('format_version') != 2:
         raise ValueError('Unsupported download manifest format')
-    source = Path(download_path)
+    required = {'model.pt', 'model_config.json', 'gene_vocab.csv',
+                'edge_index.pt', 'edge_weight.pt', 'manifest.json'}
+    if set(metadata.get('files', {})) != required:
+        raise ValueError('Download manifest must describe the six official release files')
+    source = Path(download_path).resolve()
+    if not source.is_dir():
+        raise FileNotFoundError(f'Download the six release files into a directory: {source}')
     output_dir = Path(output_dir).resolve()
     destination = output_dir / 'bulkformer_v1plus'
-    if destination.exists():
+    if destination.exists() and source != destination:
         raise FileExistsError(f'{destination} already exists; load it with load_v1plus_model')
+    for name in sorted(required):
+        path = source / name
+        if not path.is_file():
+            raise FileNotFoundError(f'Missing release file: {path}')
+        expected = metadata['files'][name]
+        if path.stat().st_size != expected['bytes'] or _sha256(path) != expected['sha256']:
+            raise ValueError(f'Release file failed SHA256 verification: {name}')
+    if source == destination:
+        return destination
     output_dir.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='.v1plus-', dir=output_dir) as temporary:
-        temporary = Path(temporary)
-        archive = source if source.is_file() else source / metadata['archive']
-        if not archive.is_file():
-            archive = temporary / metadata['archive']
-            with archive.open('wb') as joined:
-                for part in metadata['parts']:
-                    path = source / part['name']
-                    if not path.is_file():
-                        raise FileNotFoundError(f'Missing download part: {path}')
-                    if path.stat().st_size != part['bytes'] or _sha256(path) != part['sha256']:
-                        raise ValueError(f'Download part failed SHA256 verification: {path.name}')
-                    with path.open('rb') as handle:
-                        for block in iter(lambda: handle.read(8 * 1024 * 1024), b''):
-                            joined.write(block)
-        if archive.stat().st_size != metadata['bytes'] or _sha256(archive) != metadata['sha256']:
-            raise ValueError('The complete release ZIP failed SHA256 verification')
-        expected = {
-            'bulkformer_v1plus/' + name for name in [
-                'model.pt', 'model_config.json', 'gene_vocab.csv',
-                'edge_index.pt', 'edge_weight.pt', 'manifest.json'
-            ]
-        }
-        with zipfile.ZipFile(archive) as bundle:
-            if len(bundle.namelist()) != len(expected) or set(bundle.namelist()) != expected:
-                raise ValueError('Unexpected files in the release ZIP')
-            bundle.extractall(temporary)
-        (temporary / 'bulkformer_v1plus').rename(destination)
+        staging = Path(temporary) / 'bulkformer_v1plus'
+        staging.mkdir()
+        for name in sorted(required):
+            shutil.copyfile(source / name, staging / name)
+        staging.rename(destination)
     return destination
 
 
 def load_v1plus_model(model_dir, device=None):
     """Return a frozen model, its ordered gene vocabulary, and release metadata.
 
-    ``model_dir`` is the ``bulkformer_v1plus`` directory extracted from the
-    official ZIP. The checkpoint contains tensors and plain metadata, so it is
+    ``model_dir`` is the directory containing the six official release files.
+    The checkpoint contains tensors and plain metadata, so it is
     loaded using ``weights_only=True``. Every required artifact is authenticated
     against the bundle manifest before use.
     """

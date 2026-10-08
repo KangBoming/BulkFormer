@@ -49,5 +49,38 @@
   "architecture": "BulkFormerV1Plus-v1",
   "checkpoint": "Stage1 epoch17 update126055",
   "peak_gpu_memory_scope": "Notebook inference plus a second GPU copy of the original training model for comparison",
-  "numerical_comparison": "Exact equality to the original training model with deterministic CUDA algorithms; the registered phenotype encoder uses an algebraically equivalent multiplication order."
+  "numerical_comparison": "Exact equality to the original training model with deterministic CUDA algorithms; the registered phenotype encoder uses an algebraically equivalent multiplication order.",
+  "complete_file_download_validation": {
+    "physical_gpu": 7,
+    "gpu_name": "NVIDIA A800 80GB PCIe",
+    "torch_version": "2.5.1+cu124",
+    "amp_dtype": "bf16",
+    "notebook_code_cells": 9,
+    "regression_checks": 5,
+    "download_layout": "complete model.pt plus five resource files",
+    "verified_files": [
+      "model.pt",
+      "model_config.json",
+      "gene_vocab.csv",
+      "edge_index.pt",
+      "edge_weight.pt",
+      "manifest.json"
+    ],
+    "output_shapes": {
+      "sample_features": [
+        4,
+        768
+      ],
+      "gene_features": [
+        4,
+        8,
+        768
+      ],
+      "expression_predictions": [
+        4,
+        19973
+      ]
+    },
+    "all_outputs_finite": true
+  }
 }

@@ -1,44 +1,38 @@
 {
-  "format_version": 1,
-  "archive": "BulkFormer_V1Plus_stage1_epoch17.zip",
-  "bytes": 420298937,
-  "sha256": "eeab02ac99ce3e2f0187ff988906a9df705fa5fc25eda2174957d8e4c7d456b5",
-  "parts": [
-    {
-      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.001",
-      "bytes": 94371840,
-      "sha256": "6c466d8137dc5127eff93d05de794054f8df5ac26b3c37d05a622fb4df7dd962",
-      "google_drive_file_id": "1z1JHjjcSBdB6WzT7kCcb5SRvyIsTBoi5",
-      "url": "https://drive.google.com/file/d/1z1JHjjcSBdB6WzT7kCcb5SRvyIsTBoi5/view?usp=drivesdk"
+  "format_version": 2,
+  "layout": "individual_files",
+  "model_directory": "bulkformer_v1plus",
+  "google_drive_folder": "https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2",
+  "files": {
+    "model.pt": {
+      "sha256": "0fb65ec123386ef753651cfcc43e2a64728c719307fe565a5ffe16f5d8cf3cfa",
+      "bytes": 406165934,
+      "google_drive_url": "https://drive.google.com/file/d/1ly4CNE6XHqHKSP1a5c0UGUeaSVC0Was1/view?usp=drivesdk"
     },
-    {
-      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.002",
-      "bytes": 94371840,
-      "sha256": "70418667fed2fa724f89ddd6353bf9ae4fe95cbcfb0e82d37f5d438561f7f639",
-      "google_drive_file_id": "13prYgY3jJjGZ3qsS9f5TFGlHmjWyWqjl",
-      "url": "https://drive.google.com/file/d/13prYgY3jJjGZ3qsS9f5TFGlHmjWyWqjl/view?usp=drivesdk"
+    "model_config.json": {
+      "sha256": "07f409f002f46eeef0b4a65b4b3a8de70cd726b9d8af435745892c023fe8112e",
+      "bytes": 978,
+      "google_drive_url": "https://drive.google.com/file/d/1Fm-rEBC3jwJWe-OKlnM9y5G-jHmm1jY0/view?usp=drivesdk"
     },
-    {
-      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.003",
-      "bytes": 94371840,
-      "sha256": "7a027e91468b35bb6f4393d91b889802d56dd3d9fe9d08bc091c155450769742",
-      "google_drive_file_id": "17aq1nnrG4wXzoc4SWV96MwiE3ZrD4VIS",
-      "url": "https://drive.google.com/file/d/17aq1nnrG4wXzoc4SWV96MwiE3ZrD4VIS/view?usp=drivesdk"
+    "gene_vocab.csv": {
+      "sha256": "447fcecce510e1bb81e1eebf2bcfbbfefbc21e626395b003034ff70159303e40",
+      "bytes": 704213,
+      "google_drive_url": "https://drive.google.com/file/d/1iOweEpX-Ub5pIfhBVvwvpQcQwhVkOv02/view?usp=drivesdk"
     },
-    {
-      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.004",
-      "bytes": 94371840,
-      "sha256": "78ce57bf3cb743711e1c38482775d4d928ace640269adecda0aa1c2749a12774",
-      "google_drive_file_id": "1Zh2m45kda5hxfV4vPcg04PMce6TmhWic",
-      "url": "https://drive.google.com/file/d/1Zh2m45kda5hxfV4vPcg04PMce6TmhWic/view?usp=drivesdk"
+    "edge_index.pt": {
+      "sha256": "ce2eabbeb9b6f053eeae2cc994b2f6e0e03c46590b86b733f6035b346012ca1f",
+      "bytes": 10739627,
+      "google_drive_url": "https://drive.google.com/file/d/1-l-IILGstdAnK96lo6fd4IWK1xpvBa3w/view?usp=drivesdk"
     },
-    {
-      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.005",
-      "bytes": 42811577,
-      "sha256": "cb368699ede8cada01eacce29591c64b0959d8ce1f32ff6557349d5d1368bac7",
-      "google_drive_file_id": "1dweFtVLxDx7SEASXRDv1g23Vch6RiRIU",
-      "url": "https://drive.google.com/file/d/1dweFtVLxDx7SEASXRDv1g23Vch6RiRIU/view?usp=drivesdk"
+    "edge_weight.pt": {
+      "sha256": "182f34418d07e7f6e4d487068b5e466d4410baa06e28973ca667db3b5a76e61d",
+      "bytes": 2685808,
+      "google_drive_url": "https://drive.google.com/file/d/1e15aL7AX2P-QFwZmryuC1kOYvt_PwFaT/view?usp=drivesdk"
+    },
+    "manifest.json": {
+      "bytes": 1525,
+      "sha256": "443acbcb68e8c01e6bde1f521d76f588f6e2467c42222069f70323e44d956a1b",
+      "google_drive_url": "https://drive.google.com/file/d/1nk-Db3Xzfcbgs8Cv2AnzX-ST-H6L_o32/view?usp=drivesdk"
     }
-  ],
-  "folder_url": "https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2"
+  }
 }
