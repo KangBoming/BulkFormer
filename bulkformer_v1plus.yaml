@@ -1,0 +1,18 @@
+name: bulkformer-v1plus
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pytorch=2.5.1
+  - pytorch-cuda=12.1
+  - pip
+  - pip:
+      - torch-geometric==2.6.1
+      - performer-pytorch==1.1.4
+      - numpy==2.0.2
+      - pandas==2.2.3
+      - tqdm==4.67.1
+      - jupyterlab>=4,<5
+      - ipykernel>=6,<7

@@ -1,0 +1,6 @@
+/model/bulkformer_v1plus/
+/model/v1plus_download/
+/outputs/v1plus_demo/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/

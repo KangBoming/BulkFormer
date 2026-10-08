@@ -1,0 +1,62 @@
+{
+  "checkpoint": "BulkFormer V1 Plus Stage1 epoch17 update126055",
+  "source_checkpoint_sha256": "13237b9dbc28f4d603bb3bfad097e9fdb5e262d9dc66c1feb20c4bd22007d630",
+  "evaluated_at": "2026-10-02T11:56:45+08:00",
+  "protocol": "Frozen encoder, all-source-available mean pooling, registered 10-fold cuML RF",
+  "input": "natural ln(TPM+1), release gene axis; no extra masking",
+  "encoder_precision": "bfloat16",
+  "encoder_batch_size": 32,
+  "random_forest": {
+    "n_estimators": 500,
+    "split_criterion": "gini",
+    "bootstrap": true,
+    "max_samples": 1.0,
+    "max_depth": 16,
+    "max_features": "sqrt",
+    "n_bins": 128,
+    "n_streams": 1,
+    "min_samples_leaf": 2,
+    "random_state": 42
+  },
+  "splits": {
+    "disignatlas": "registered stratified 10-fold",
+    "tcga": "registered stratified 10-fold",
+    "gtex": "registered donor-grouped StratifiedGroupKFold(10)"
+  },
+  "metrics": [
+    {
+      "dataset": "disignatlas",
+      "n_samples": 10688,
+      "n_classes": 19,
+      "feature_dim": 768,
+      "oof_weighted_f1": 0.9293067132856322,
+      "oof_accuracy": 0.9299214071856288,
+      "oof_macro_f1_present": 0.9424252847077862,
+      "fold_weighted_f1_mean": 0.9291479131046538,
+      "fold_weighted_f1_std": 0.0064872820511617
+    },
+    {
+      "dataset": "gtex",
+      "n_samples": 19616,
+      "n_classes": 54,
+      "feature_dim": 768,
+      "oof_weighted_f1": 0.9114255934726828,
+      "oof_accuracy": 0.9143556280587276,
+      "oof_macro_f1_present": 0.8385839634303835,
+      "fold_weighted_f1_mean": 0.911280332131022,
+      "fold_weighted_f1_std": 0.0084192997988044
+    },
+    {
+      "dataset": "tcga",
+      "n_samples": 9780,
+      "n_classes": 33,
+      "feature_dim": 768,
+      "oof_weighted_f1": 0.9172927239722148,
+      "oof_accuracy": 0.9224948875255624,
+      "oof_macro_f1_present": 0.8745429906044256,
+      "fold_weighted_f1_mean": 0.9168866743094456,
+      "fold_weighted_f1_std": 0.0085214252756634
+    }
+  ],
+  "interpretation": "Historical frozen-feature phenotype results for this exact checkpoint; a separate protocol from the paper table."
+}

@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "device": "NVIDIA A800 80GB PCIe",
+  "physical_gpu": 7,
+  "precision": "bfloat16",
+  "pytorch": "2.5.1+cu124",
+  "deterministic_algorithms": true,
+  "notebook_code_cells_executed": [
+    3,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+  ],
+  "notebook_sample_count": 4,
+  "input_shape": [
+    4,
+    19973
+  ],
+  "sample_shape": [
+    4,
+    768
+  ],
+  "gene_shape": [
+    4,
+    8,
+    768
+  ],
+  "expression_shape": [
+    4,
+    19973
+  ],
+  "compared_with_original_training_model": {
+    "sample_features": 0,
+    "gene_features": 0,
+    "expression_predictions": 0
+  },
+  "all_427_gpu_state_tensors_equal_to_original": true,
+  "same_public_model_repeated_forward_sample_max_absolute_difference": 0,
+  "registered_phenotype_encoder_max_absolute_difference": 0.00037026405334472656,
+  "peak_gpu_allocated_bytes": 12336915456,
+  "elapsed_seconds": 8.346907793020364,
+  "source_model_and_graph_python_files_identical": true,
+  "parts_reassembly_and_archive_sha256_verified": true,
+  "architecture": "BulkFormerV1Plus-v1",
+  "checkpoint": "Stage1 epoch17 update126055",
+  "peak_gpu_memory_scope": "Notebook inference plus a second GPU copy of the original training model for comparison",
+  "numerical_comparison": "Exact equality to the original training model with deterministic CUDA algorithms; the registered phenotype encoder uses an algebraically equivalent multiplication order."
+}

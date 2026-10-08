@@ -2,6 +2,19 @@
 
 
 
+## 🆕 BulkFormer V1 Plus (2026-10-09)
+
+We release **BulkFormer V1 Plus Stage1 epoch 17**, a 101.3M-parameter model over 19,973 human genes with a 768-dimensional, 12-layer weighted-GCN/Performer encoder. It supports sample features, contextual gene features, and expression prediction.
+
+- [Model introduction, input conventions, and evaluation](model/V1_PLUS.md)
+- [Pretrained weights on Google Drive](https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2)
+- [Jupyter feature extraction notebook](bulkformer_v1plus_extract_feature.ipynb)
+- [V1 Plus environment](bulkformer_v1plus.yaml)
+
+The notebook follows the existing feature extraction workflow and includes synthetic raw counts. Download all five weight parts; the notebook verifies and combines them automatically. V1 Plus requires the vocabulary and graph bundled with its checkpoint.
+
+---
+
 ##  What’s New (Last Updated: 2025-12-11)
 
 **All previous code files, data files and  pretrained model weights have also been comprehensively updated—please refer to the latest release for the correct and up-to-date version of BulkFormer.**

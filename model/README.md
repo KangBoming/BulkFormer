@@ -19,3 +19,14 @@ We trained and released **five BulkFormer models** at different parameter scales
 | **BulkFormer-147M** | 147M       | 640        | 12     | 8     | [Download](https://drive.google.com/file/d/1UtqN_vCh3669Fs-GU5CTE7F7UnuQCAzN/view?usp=drive_link) |
 
 
+
+
+## BulkFormer V1 Plus — Stage1 epoch 17
+
+| Model | Parameters | Hidden Dim | Layers | Heads | Download |
+|---|---:|---:|---:|---:|---|
+| **BulkFormer V1 Plus** | 101.3M | 768 | 12 | 12 | [Google Drive](https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2) |
+
+See [V1_PLUS.md](V1_PLUS.md) for the model introduction and evaluation. Download all five numbered archive parts into `model/v1plus_download/`, then run [bulkformer_v1plus_extract_feature.ipynb](../bulkformer_v1plus_extract_feature.ipynb). It verifies, joins, and extracts the release into `model/bulkformer_v1plus/`.
+
+The bundle includes the V1 Plus weights, configuration, 19,973-gene vocabulary with gene lengths, and weighted graph. Part checksums are listed in [v1plus_downloads.json](v1plus_downloads.json).

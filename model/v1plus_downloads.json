@@ -1,0 +1,44 @@
+{
+  "format_version": 1,
+  "archive": "BulkFormer_V1Plus_stage1_epoch17.zip",
+  "bytes": 420298937,
+  "sha256": "eeab02ac99ce3e2f0187ff988906a9df705fa5fc25eda2174957d8e4c7d456b5",
+  "parts": [
+    {
+      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.001",
+      "bytes": 94371840,
+      "sha256": "6c466d8137dc5127eff93d05de794054f8df5ac26b3c37d05a622fb4df7dd962",
+      "google_drive_file_id": "1z1JHjjcSBdB6WzT7kCcb5SRvyIsTBoi5",
+      "url": "https://drive.google.com/file/d/1z1JHjjcSBdB6WzT7kCcb5SRvyIsTBoi5/view?usp=drivesdk"
+    },
+    {
+      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.002",
+      "bytes": 94371840,
+      "sha256": "70418667fed2fa724f89ddd6353bf9ae4fe95cbcfb0e82d37f5d438561f7f639",
+      "google_drive_file_id": "13prYgY3jJjGZ3qsS9f5TFGlHmjWyWqjl",
+      "url": "https://drive.google.com/file/d/13prYgY3jJjGZ3qsS9f5TFGlHmjWyWqjl/view?usp=drivesdk"
+    },
+    {
+      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.003",
+      "bytes": 94371840,
+      "sha256": "7a027e91468b35bb6f4393d91b889802d56dd3d9fe9d08bc091c155450769742",
+      "google_drive_file_id": "17aq1nnrG4wXzoc4SWV96MwiE3ZrD4VIS",
+      "url": "https://drive.google.com/file/d/17aq1nnrG4wXzoc4SWV96MwiE3ZrD4VIS/view?usp=drivesdk"
+    },
+    {
+      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.004",
+      "bytes": 94371840,
+      "sha256": "78ce57bf3cb743711e1c38482775d4d928ace640269adecda0aa1c2749a12774",
+      "google_drive_file_id": "1Zh2m45kda5hxfV4vPcg04PMce6TmhWic",
+      "url": "https://drive.google.com/file/d/1Zh2m45kda5hxfV4vPcg04PMce6TmhWic/view?usp=drivesdk"
+    },
+    {
+      "name": "BulkFormer_V1Plus_stage1_epoch17.zip.005",
+      "bytes": 42811577,
+      "sha256": "cb368699ede8cada01eacce29591c64b0959d8ce1f32ff6557349d5d1368bac7",
+      "google_drive_file_id": "1dweFtVLxDx7SEASXRDv1g23Vch6RiRIU",
+      "url": "https://drive.google.com/file/d/1dweFtVLxDx7SEASXRDv1g23Vch6RiRIU/view?usp=drivesdk"
+    }
+  ],
+  "folder_url": "https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2"
+}
