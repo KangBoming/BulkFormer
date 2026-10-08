@@ -1,8 +1,21 @@
 # BulkFormer: A large-scale foundation model for bulk transcriptomes
 
+## Latest release — 2026-10-09
+
+> [!NOTE]
+> **We have released [bulkformer-latest](https://github.com/KangBoming/bulkformer-latest) in a dedicated repository.**
+>
+> The new model has **101.3M parameters**, covers **19,973 human genes**, and provides **768-dimensional sample and contextual gene representations**, together with expression predictions, using a weighted GCN and 12-layer Performer encoder. The released checkpoint is V1 Plus Stage1 epoch 17 / update 126,055.
+
+**[New repository](https://github.com/KangBoming/bulkformer-latest)** · **[GPU Jupyter notebook](https://github.com/KangBoming/bulkformer-latest/blob/main/notebooks/bulkformer-latest_feature_extraction.ipynb)** · **[Weights and configuration](https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2)** · **[Comparison with bulkformer-147M](https://github.com/KangBoming/bulkformer-latest/blob/main/benchmarks/phenotype/README.md)**
+
+The dedicated repository contains the new model's introduction, inference code, environment, complete weight-file download instructions, and retained phenotype evaluations. This repository provides the original 37M–147M model family and publication resources.
+
+---
 
 
-##  What’s New (Last Updated: 2025-12-11)
+
+## Previous update — 2025-12-11
 
 **All previous code files, data files and  pretrained model weights have also been comprehensively updated—please refer to the latest release for the correct and up-to-date version of BulkFormer.**
 
