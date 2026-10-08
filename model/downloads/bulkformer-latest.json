@@ -1,7 +1,7 @@
 {
   "format_version": 2,
   "layout": "individual_files",
-  "model_directory": "bulkformer_v1plus",
+  "model_directory": "bulkformer-latest",
   "google_drive_folder": "https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2",
   "files": {
     "model.pt": {

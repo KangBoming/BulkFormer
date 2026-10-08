@@ -11,8 +11,9 @@ import numpy as np
 import pandas as pd
 import torch
 
-from utils.v1plus import (extract_feature, main_gene_selection, normalize_data,
-                          prepare_v1plus_bundle)
+from utils.latest import (extract_feature, main_gene_selection, normalize_data,
+                          prepare_latest_bundle)
+from utils.v1plus import prepare_v1plus_bundle
 
 
 class PoolingModel(torch.nn.Module):
@@ -92,19 +93,31 @@ class DownloadTests(unittest.TestCase):
                                           'sha256': hashlib.sha256(b'test').hexdigest()}
             metadata = root / 'downloads.json'
             metadata.write_text(json.dumps(manifest))
-            destination = prepare_v1plus_bundle(downloads, root / 'output', metadata)
+            destination = prepare_latest_bundle(downloads, root / 'output', metadata)
+            self.assertEqual(destination.name, 'bulkformer-latest')
             self.assertEqual((destination / 'model.pt').read_bytes(), b'test')
-            self.assertEqual(prepare_v1plus_bundle(destination, root / 'output', metadata), destination)
+            self.assertEqual(prepare_latest_bundle(destination, root / 'output', metadata), destination)
             with self.assertRaises(FileExistsError):
-                prepare_v1plus_bundle(downloads, root / 'output', metadata)
+                prepare_latest_bundle(downloads, root / 'output', metadata)
             (downloads / 'model.pt').write_bytes(b'bad!')
             with self.assertRaises(ValueError):
-                prepare_v1plus_bundle(downloads, root / 'bad', metadata)
-            self.assertFalse((root / 'bad' / 'bulkformer_v1plus').exists())
+                prepare_latest_bundle(downloads, root / 'bad', metadata)
+            self.assertFalse((root / 'bad' / 'bulkformer-latest').exists())
             (downloads / 'model.pt').write_bytes(b'test')
+            manifest['model_directory'] = 'bulkformer_v1plus'
+            metadata.write_text(json.dumps(manifest))
+            compatibility = prepare_v1plus_bundle(downloads, root / 'legacy', metadata)
+            self.assertEqual(compatibility.name, 'bulkformer_v1plus')
+            self.assertEqual((compatibility / 'model.pt').read_bytes(), b'test')
+            manifest['model_directory'] = '../../outside'
+            metadata.write_text(json.dumps(manifest))
+            with self.assertRaises(ValueError):
+                prepare_latest_bundle(downloads, root / 'invalid', metadata)
+            manifest.pop('model_directory')
+            metadata.write_text(json.dumps(manifest))
             (downloads / 'model_config.json').unlink()
             with self.assertRaises(FileNotFoundError):
-                prepare_v1plus_bundle(downloads, root / 'missing', metadata)
+                prepare_latest_bundle(downloads, root / 'missing', metadata)
 
 
 if __name__ == '__main__':

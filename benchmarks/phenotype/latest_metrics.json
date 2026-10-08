@@ -58,5 +58,7 @@
       "fold_weighted_f1_std": 0.0085214252756634
     }
   ],
-  "interpretation": "Historical frozen-feature phenotype results for this exact checkpoint; a separate protocol from the paper table."
+  "interpretation": "Historical frozen-feature phenotype results for this exact checkpoint; a separate protocol from the paper table.",
+  "model_name": "bulkformer-latest",
+  "checkpoint_id": "v1plus-stage1-epoch17-update126055"
 }

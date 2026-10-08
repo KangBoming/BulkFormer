@@ -82,5 +82,43 @@
       ]
     },
     "all_outputs_finite": true
+  },
+  "public_model_name": "bulkformer-latest",
+  "checkpoint_id": "v1plus-stage1-epoch17-update126055",
+  "renamed_repository_validation": {
+    "success": true,
+    "model_name": "bulkformer-latest",
+    "checkpoint_id": "v1plus-stage1-epoch17-update126055",
+    "physical_gpu": 7,
+    "gpu_name": "NVIDIA A800 80GB PCIe",
+    "torch_version": "2.5.1+cu124",
+    "precision": "bfloat16",
+    "notebook_path": "notebooks/bulkformer-latest_feature_extraction.ipynb",
+    "notebook_working_directory": "notebooks",
+    "notebook_code_cells": 9,
+    "regression_checks": 5,
+    "legacy_import_identity_verified": true,
+    "architecture_and_graph_bytes_unchanged": true,
+    "local_document_links_verified": 85,
+    "phenotype_metric_rows": 6,
+    "phenotype_fold_rows": 60,
+    "pooled_score_gains_verified": true,
+    "weights_sha256": "0fb65ec123386ef753651cfcc43e2a64728c719307fe565a5ffe16f5d8cf3cfa",
+    "all_outputs_finite": true,
+    "output_shapes": {
+      "sample_features": [
+        4,
+        768
+      ],
+      "gene_features": [
+        4,
+        8,
+        768
+      ],
+      "expression_predictions": [
+        4,
+        19973
+      ]
+    }
   }
 }

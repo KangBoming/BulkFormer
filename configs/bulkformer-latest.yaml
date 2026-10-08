@@ -1,4 +1,4 @@
-name: bulkformer-v1plus
+name: bulkformer-latest
 channels:
   - pytorch
   - nvidia

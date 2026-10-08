@@ -1,45 +1,20 @@
-## 📦 Preprocessed Data & Resources
+# Example data and gene resources
 
-The following **preprocessed resource files** required for running BulkFormer demos and scripts can be downloaded from **Zenodo**:
+## bulkformer-latest
 
-🔗 **Latest Zenodo record (always use the newest version):**   https://doi.org/10.5281/zenodo.15744294
+[latest_demo_counts.csv](latest_demo_counts.csv) contains **four synthetic samples** with samples as rows and Ensembl IDs as columns. NumPy seed 42 was used to generate the counts; measured zeros are retained and eight genes are omitted to demonstrate missing-gene alignment. This example contains no biological samples.
 
-**Available files:**
-- `PreBULK.h5ad.zip(Pretraining data for BulkFormer)`
-- `bulkformer_gene_info.csv`
-- `G_tcga.pt`  
-- `G_tcga_weight.pt`  
-- `esm2_feature_concat.pt`  
-- `demo_count_adata.h5ad`  
-- `interested_gene_list.pt`
-- `Downtask-related data`
+The model's ordered 19,973-gene vocabulary, gene lengths, weighted graph, and configuration are all supplied in its [Google Drive model folder](https://drive.google.com/drive/folders/1AfekiOBNs6GzPBbA9BDlpuoolZIWbGQ2). See the [download instructions](../model/README.md) and [latest notebook](../notebooks/bulkformer-latest_feature_extraction.ipynb).
 
+## Original model-family resources
 
-> ⚠️ **Important:** All of the above files have been **updated** in the latest release.
+The original models use the preprocessed resources in the [Zenodo record](https://doi.org/10.5281/zenodo.15744294), including:
 
-> Please **re-download them from the current Zenodo record**, as any previously downloaded
+- `PreBULK.h5ad.zip`: Original pretraining data.
+- `bulkformer_gene_info.csv`: Original model-family vocabulary.
+- `G_tcga.pt` and `G_tcga_weight.pt`: Original weighted graph.
+- `esm2_feature_concat.pt`: Original workflow's protein features.
+- `demo_count_adata.h5ad` and `interested_gene_list.pt`: Example data and selected genes.
+- Downstream task resources.
 
-> versions may be outdated and **incompatible with the latest BulkFormer codebase**.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## V1 Plus demo resources
-
-`v1plus_demo_counts.csv` contains **four synthetic samples**, with samples as rows and Ensembl IDs as columns. Counts were generated with NumPy seed 42; measured zeros are retained, and eight genes are omitted to demonstrate missing-gene alignment. It contains no biological samples and is only an inference example.
-
-The V1 Plus gene vocabulary, gene lengths, and weighted graph are included in its [Google Drive model bundle](../model/V1_PLUS.md#download-and-run). Use those resources with [bulkformer_v1plus_extract_feature.ipynb](../bulkformer_v1plus_extract_feature.ipynb).
+The original notebook also reads demonstration count/normalized CSVs; provide those files or replace the input paths with your own data. The vocabulary and gene-length CSVs checked into this directory belong to the original workflow. Use resources matching the model family and release described in its [model guide](../docs/models/original-models.md).

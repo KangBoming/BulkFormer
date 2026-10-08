@@ -1,0 +1,110 @@
+{
+  "model_name": "bulkformer-latest",
+  "checkpoint_id": "v1plus-stage1-epoch17-update126055",
+  "latest_evaluation_date": "2026-10-02",
+  "baseline_evaluation_date": "2026-09-15",
+  "primary_metric": "pooled out-of-fold weighted F1",
+  "classifier": "cuML RandomForestClassifier",
+  "hyperparameter_search": false,
+  "random_forest": {
+    "n_estimators": 500,
+    "split_criterion": "gini",
+    "bootstrap": true,
+    "max_samples": 1.0,
+    "max_depth": 16,
+    "max_features": "sqrt",
+    "n_bins": 128,
+    "n_streams": 1,
+    "min_samples_leaf": 2,
+    "random_state": 42
+  },
+  "input_scale": "natural ln(TPM+1)",
+  "pooling": "mean of all source-available contextual gene features, including measured zeros",
+  "extra_random_masking": false,
+  "models": {
+    "bulkformer-latest": {
+      "source_checkpoint_sha256": "13237b9dbc28f4d603bb3bfad097e9fdb5e262d9dc66c1feb20c4bd22007d630",
+      "published_weights_sha256": "0fb65ec123386ef753651cfcc43e2a64728c719307fe565a5ffe16f5d8cf3cfa",
+      "feature_dim": 768,
+      "vocabulary_size": 19973,
+      "encoder_precision": "bfloat16",
+      "encoder_batch_size": 32
+    },
+    "bulkformer-147M": {
+      "feature_dim": 643,
+      "vocabulary_size": 20010,
+      "encoder_precision": "float16",
+      "encoder_batch_size": 2,
+      "feature_channels": "640 contextual channels plus 3 original summary-statistic channels",
+      "source_checkpoint_sha256": "07b69eed9b74154bf6f98a5632f0b8b685124e90bea32b795f73d9e23d9e9f3f"
+    }
+  },
+  "datasets": {
+    "disignatlas": {
+      "n_samples": 10688,
+      "n_classes": 19,
+      "split": "registered stratified 10-fold",
+      "folds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "metadata_sha256": "3373453ef9f071fe13cc6a44baf102a21a7730122b77d48e4216e900e5c26913",
+      "latest_evaluation_manifest_sha256": "5d525a79b6734871d07bbd1a85e9f8fa527c382a155958e5c8d04c5d920e4b73",
+      "baseline_evaluation_manifest_sha256": "bd7b650b89d0ca4333c4b1083000c62a26a390b71d2b1ca7078e09f1ad6c0246"
+    },
+    "tcga": {
+      "n_samples": 9780,
+      "n_classes": 33,
+      "split": "registered stratified 10-fold",
+      "folds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "metadata_sha256": "1a781d7155e933314909a981423a7fecd1507f06b929ed6915897f3cfe27398c",
+      "latest_evaluation_manifest_sha256": "a2219fbc2e94ce1631d6ffa6fe9eed5c061c174dcff674a326f4e7f4303e402d",
+      "baseline_evaluation_manifest_sha256": "f85727938ddaba7982798074c05cd39e7b7e5f8f14845cafe45c883ef2624c42"
+    },
+    "gtex": {
+      "n_samples": 19616,
+      "n_classes": 54,
+      "split": "registered donor-grouped StratifiedGroupKFold(10)",
+      "folds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "metadata_sha256": "f4b295fb7616256af143069a42f4530eb7d04d146e6b36832b26fd299e04b9e7",
+      "latest_evaluation_manifest_sha256": "a9425f5ae81510cf818e639f7befebc3991f4718f22802d7030aecc39fbcef8c",
+      "baseline_evaluation_manifest_sha256": "72c386465749b55c37aad1306b19c0dc874fe0ebe24a8065174e409a0cc95df3"
+    }
+  },
+  "interpretation": "Identical samples, label/fold assignments and classifier settings; native model vocabulary, feature dimension and extraction precision differ. Historical 147M OOF results are reused. Collections can overlap pretraining sources. This is a frozen-feature comparison, not a controlled architecture ablation or an external-cohort benchmark.",
+  "source_artifacts": {
+    "all_datasets_summary.csv": "97696c1ccfe5ca0a5a660590e9350acd626d437504da572db678d8653a52f6a1",
+    "checkpoint_summary.csv": "9902686de837c0ad9be92fd466d95e845005a5a443bb09d105eb7a8ca98e27b7",
+    "protocol_audit.json": "79fa57248ffb765e1171b42ce0c607035f480cea2b29ebb847f2a25125ee1ca8"
+  }
+}
