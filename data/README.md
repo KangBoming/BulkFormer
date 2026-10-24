@@ -39,7 +39,7 @@ The historical notebooks record this procedure:
 4. Calculate each gene's expression standard deviation across samples using `torch.std(..., dim=0)`.
 5. Rank genes by decreasing standard deviation, retain the top 2,000 genes, and save their positional indices.
 
-Neither DepMap expression data nor DepMap gene dependency labels were used to select this list. This variability-based selection is distinct from the task-specific DEG example below.
+Neither DepMap expression data nor DepMap gene dependency labels were used to select this list. The same variability-based criterion can be applied to a user's own cohort, as in the custom HVG example below.
 
 The following code shows the selection step once the source matrix is prepared. `X` must be a samples-by-genes PyTorch tensor of `ln(TPM + 1)` values, with columns in the released vocabulary order:
 
@@ -57,11 +57,11 @@ torch.save(indices, "interested_gene_list.pt")
 
 Reproducing the exact historical list requires the same source expression matrix and gene order. Applying this selection rule to another cohort can produce a different gene set.
 
-### Choosing a custom Top 2,000 DEG set
+### Choosing a custom Top 2,000 HVG set
 
-Users can aggregate embeddings over genes relevant to their own research question. For example, identify DEGs for a contrast of interest in the bulk transcriptomic cohort being analyzed, then mean-pool over the top 2,000 DEGs present in the BulkFormer vocabulary. In our analyses, this has often improved downstream performance. The appropriate contrast, ranking, and number of genes depend on the task. For predictive benchmarks, compute label-informed DEGs within each training split.
+Users can aggregate embeddings over genes relevant to their own research question. For example, calculate highly variable genes (HVGs) across the bulk transcriptomic cohort being analyzed, then mean-pool over the top 2,000 HVGs present in the BulkFormer vocabulary. In our analyses, this has often improved downstream performance. The appropriate preprocessing, variability metric, and number of genes depend on the task. For predictive benchmarks, estimate gene variability within each training split.
 
-The example below assumes that `deg_results` is a pandas DataFrame with `ensg_id` and numeric `padj` columns. It selects up to 2,000 unique vocabulary genes with adjusted p-values below 0.05, ranked by adjusted p-value. Fewer genes are retained if fewer meet these criteria.
+The example below uses across-sample expression standard deviation as the HVG selection metric. It assumes that `log_tpm_df` is a samples-by-genes pandas DataFrame of `ln(TPM + 1)` values, with unique Ensembl gene IDs as columns. Use the observed expression matrix before adding placeholder values for missing vocabulary genes. The code selects up to 2,000 vocabulary genes with positive standard deviation; fewer genes are retained if fewer meet these criteria.
 
 ```python
 import pandas as pd
@@ -72,20 +72,21 @@ gene_to_idx = {
     for idx, gene_id in enumerate(gene_info["ensg_id"])
 }
 
-ranked_degs = (
-    deg_results.loc[
-        (deg_results["padj"] < 0.05)
-        & deg_results["ensg_id"].isin(gene_to_idx)
-    ]
-    .sort_values("padj")
-    .drop_duplicates("ensg_id")
+cohort_gene_std = (
+    log_tpm_df.loc[:, log_tpm_df.columns.isin(gene_to_idx)]
+    .std(axis=0)
+    .dropna()
+)
+ranked_hvgs = (
+    cohort_gene_std[cohort_gene_std > 0]
+    .sort_values(ascending=False)
     .head(2000)
 )
 custom_gene_idx = [
-    gene_to_idx[gene_id] for gene_id in ranked_degs["ensg_id"]
+    gene_to_idx[gene_id] for gene_id in ranked_hvgs.index
 ]
 if not custom_gene_idx:
-    raise ValueError("No selected DEGs match the BulkFormer vocabulary.")
+    raise ValueError("No variable genes match the BulkFormer vocabulary.")
 ```
 
 In the notebook's sample-level extraction call, set `interested_gene_idx=custom_gene_idx` and `aggregate_type='mean'`. Continue passing the full vocabulary-aligned expression matrix as `expr_array`.

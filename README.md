@@ -128,7 +128,7 @@ Please follow bulkformer_extract_feature.ipynb
 
 ## Choosing genes for sample-level pooling
 
-`data/interested_gene_list.pt` is an **optional example set of 2,000 genes** for aggregating gene embeddings into a sample-level embedding. Users can choose their own pooling genes for each downstream task, such as the top 2,000 differentially expressed genes (DEGs) identified for the bulk transcriptomic cohort being analyzed. In our analyses, mean pooling over task-relevant DEGs has often improved downstream performance; the appropriate gene set depends on the task.
+`data/interested_gene_list.pt` is an **optional example set of 2,000 genes** for aggregating gene embeddings into a sample-level embedding. Users can choose their own pooling genes for each downstream task, such as the top 2,000 highly variable genes (HVGs) calculated from the bulk transcriptomic cohort being analyzed. In our analyses, mean pooling over cohort-specific HVGs has often improved downstream performance; the appropriate gene set depends on the task.
 
 **The paper used mean pooling across all genes for sample-level embeddings, without this example subset.** In the notebook, set `interested_gene_idx=None` and `aggregate_type='mean'` to follow that pooling protocol. Selecting pooling genes only changes output aggregation; the model input must still follow the complete 20,010-gene vocabulary.
 
@@ -136,7 +136,7 @@ Within the original 37M–147M model family provided here, we recommend **BulkFo
 
 The example list was selected by ranking genes by their across-sample standard deviation in an ARCHS4-derived expression matrix after TPM normalization and `ln(TPM + 1)` transformation, then retaining the top 2,000 genes. Its entries are zero-based row positions in `bulkformer_gene_info.csv`.
 
-See the [pooling gene set guide](data/README.md#example-pooling-gene-set) for the generation procedure, index mapping, and a custom Top 2,000 DEG example. See also the clarification in [issue #12](https://github.com/KangBoming/BulkFormer/issues/12#issuecomment-6384729462).
+See the [pooling gene set guide](data/README.md#example-pooling-gene-set) for the generation procedure, index mapping, and a custom Top 2,000 HVG example. See also the clarification in [issue #12](https://github.com/KangBoming/BulkFormer/issues/12#issuecomment-6384729462).
 
 ## 📄 Publication
 If you use **BulkFormer** in your work, please cite:
