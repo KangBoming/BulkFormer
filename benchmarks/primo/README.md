@@ -1,6 +1,6 @@
 # Official PRIMO bulk results
 
-Snapshot: **2026-11-04 12:33:58 +08:00**, 19 leaderboard entries, all 44 released bulk datasets and 6,390 samples covered. [Live leaderboard](https://primomics-primo-eval.hf.space/?tab=leaderboard) · [Official evaluation code](https://github.com/PRIMOmics/primo-eval).
+Score snapshot: **2026-11-04 12:33:58 +08:00**, 19 leaderboard entries. The official bulk scoring view contains **59 tasks, 39 cohorts and 4,922 patients** across five task families. Our submitted embeddings cover all **44 released bulk datasets and 6,390 samples**; this is the submission coverage rather than the scored patient count. [Live leaderboard](https://primomics-primo-eval.hf.space/?tab=leaderboard) · [Official evaluation code](https://github.com/PRIMOmics/primo-eval).
 
 | Public name | Official submission alias | Rank | Elo | Clinical Pearson | Endotype AUROC | Perturbation centered Spearman | Prognosis AUROC | Treatment AUROC |
 |---|---|---:|---:|---:|---:|---:|---:|---:|

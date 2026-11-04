@@ -74,21 +74,17 @@ The epoch-40 Atlas run name records its planned budget; it does not mean 40 epoc
 
 ## PRIMO benchmark
 
-Official bulk leaderboard snapshot: **2026-11-04**, **44 datasets / 6,390 samples / 19 entries**. All four BulkFormer entries below have full dataset coverage.
+[PRIMO](https://github.com/PRIMOmics/primo-eval) is an open benchmark of omics foundation-model representations for patient-level drug-development tasks. Each model supplies sample embeddings, and the same downstream predictor evaluates them; most task labels remain private. The bulk RNA-seq board covers **five task families**: clinical score prediction, molecular endotype classification, perturbation response prediction, prognosis, and treatment outcome prediction.
 
-| Representation | Overall rank | Elo |
-|---|---:|---:|
-| **BulkFormer-Atlas + HVG** | **1 / 19** | **1027** |
-| EVA 300M + HVG | 2 / 19 | 1025 |
-| COMPASS + HVG | 3 / 19 | 1010 |
-| HVG-1200 baseline | 5 / 19 | 1000 |
-| BulkFormer-Latest + HVG | 6 / 19 | 985 |
-| BulkFormer-Atlas | 8 / 19 | 972 |
-| BulkFormer-Latest | 14 / 19 | 838 |
+The official bulk board reports **59 tasks across 39 cohorts and 4,922 patients**, with **19 leaderboard entries**, as of **2026-11-04**. Our complete embedding submissions cover **44 datasets and 6,390 samples**; these counts describe the submitted data, while the screenshot reports the scored view.
+
+[![Official PRIMO bulk leaderboard: 59 tasks, 39 cohorts and 4,922 patients, captured on 2026-11-04](docs/assets/primo-official-bulk-leaderboard-20261104.png)](https://primomics-primo-eval.hf.space/?tab=leaderboard)
+
+*Direct screenshot of the official page, with all ranked entries and original submission names preserved. Click the image to open the live board. [Full-resolution image](docs/assets/primo-official-bulk-leaderboard-20261104.png) · [Capture record](docs/assets/primo-official-bulk-leaderboard-20261104.json).*
 
 `+ HVG` means the official evaluator concatenates the model representation with its **1,200-gene expression baseline**. It is distinct from Atlas's **4,096-gene input panel**. Atlas alone is not the overall first-place entry. Ranks and Elo change as submissions change; a small Elo difference does not establish statistical significance.
 
-The leaderboard aliases are **Atlas = BulkFormer-variant** and **Latest = BulkFormer-V3Plus**. Latest's entry uses the same epoch-19 checkpoint released here. [Category metrics, checkpoint hashes and evaluation details](benchmarks/primo/README.md) record input-scale exceptions, public-task model selection and the unaudited possibility of pretraining overlap. These scores are separate from the original paper benchmark.
+The leaderboard aliases are **Atlas = BulkFormer-variant** and **Latest = BulkFormer-V3Plus**. Latest's entry uses the same epoch-19 checkpoint released here; the older rows named `BulkFormer-Latest` belong to the archived release. [Category metrics, checkpoint hashes and evaluation details](benchmarks/primo/README.md) record input-scale exceptions, public-task model selection and the unaudited possibility of pretraining overlap. These scores are separate from the original paper benchmark.
 
 ## Quick start
 
