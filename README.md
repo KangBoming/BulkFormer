@@ -16,7 +16,7 @@
 
 BulkFormer provides pretrained representations of human bulk transcriptomes. **BulkFormer-Atlas** is our recommended starting point for sample-level prediction; **BulkFormer-Latest** provides contextual gene features and expression recovery. This repository brings both models together with the original publication models.
 
-> **2026-11-04 · New releases:** BulkFormer-Atlas and BulkFormer-Latest are available with complete weights, inference code and executed GPU tutorials. [Release](https://github.com/KangBoming/BulkFormer/releases/tag/v2026.11.04) · [Changelog](CHANGELOG.md)
+> **2026-11-04 · New releases:** BulkFormer-Atlas and BulkFormer-Latest are available with complete weights, inference code and executed GPU tutorials. [Release](https://github.com/KangBoming/BulkFormer/releases/tag/v2026.11.04) · [Announcement](https://github.com/KangBoming/BulkFormer/discussions/13) · [Changelog](CHANGELOG.md)
 >
 > **Follow model updates:** Select **Watch → Custom → Releases** on this repository. Visit [Announcements](https://github.com/KangBoming/BulkFormer/discussions/categories/announcements) for release news and discussion.
 
