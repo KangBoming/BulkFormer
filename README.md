@@ -96,6 +96,17 @@ download_model("latest")  # model/latest/
 
 Each Google Drive release provides a **single complete FP32 weight file**, architecture configuration, gene resources, inference environment and checksums. [Download guide](model/README.md).
 
+### How many genes should I provide?
+
+Start with the **complete available expression matrix** and pass it to the model's preparation function before selecting genes.
+
+| Model | Recommended number of genes | How to prepare the input |
+|---|---|---|
+| **Atlas** | **4,096 selected coding genes** per sample | Normalize the full available matrix with `prepare_atlas_input`, then select genes from the 22,636-gene coding vocabulary. The released extraction API accepts **at most 4,096 genes**; reuse the same gene list across samples you want to compare. |
+| **Latest** | **As close as possible to all 19,973 coding genes** (about 20,000) | Pass the complete available coding transcriptome to `prepare_latest_input`. It aligns the data to all 19,973 model positions and marks unavailable genes as missing. Select HVG/DEG embeddings **after** full-transcriptome encoding. |
+
+For Atlas, lower `n_genes` if fewer than 4,096 shared variable genes are available. For Latest, missing genes are supported, but filling their positions does not restore the missing measurements. In both models, preserve measured zeros and check the returned `coverage` table. [Input guide](docs/input-guide.md).
+
 ### Atlas · sample embeddings
 
 ```python
@@ -109,7 +120,7 @@ panel = select_variable_genes(expression, n_genes=4096)
 sample_embeddings = extract_atlas(model, expression, panel, batch_size=2)
 ```
 
-Use a fixed panel for a cohort. For prospective supervised evaluation, select it on training samples and reuse it on held-out samples. PRIMO used unlabeled whole-cohort selection. [Atlas input guide](docs/input-guide.md#atlas).
+Save the selected gene IDs with the embeddings and reuse that gene list when processing additional samples. [Atlas tutorial](notebooks/bulkformer-atlas_sample_embeddings.ipynb).
 
 ### Latest · contextual gene embeddings
 
