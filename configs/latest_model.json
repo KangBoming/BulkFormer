@@ -1,0 +1,66 @@
+{
+  "model": {
+    "num_genes": 19973,
+    "dim": 768,
+    "depth": 12,
+    "heads": 12,
+    "dim_head": 64,
+    "ff_mult": 4,
+    "nb_features": 256,
+    "dropout": 0.1,
+    "attention_dropout": 0.05,
+    "graph_hidden_dim": 256,
+    "graph_dropout": 0.1,
+    "graph_scale_init": 0.01,
+    "expression_base": 100.0,
+    "mask_value": -10.0,
+    "mask_ratio_scaling_enabled": false,
+    "mask_ratio_reference": 0.15,
+    "mask_ratio_max_scale": 2.0,
+    "mask_ratio_min_visible_fraction": 0.05,
+    "fix_performer_projection_matrices": true
+  },
+  "global_expression_context": {
+    "hidden_dim": 2560,
+    "activation": "relu",
+    "input_policy": "masked_expression_with_sentinel",
+    "normalization": "non_affine_layer_norm",
+    "injection": "broadcast_add_before_input_norm",
+    "normalization_eps": 1e-08
+  },
+  "input_feature_normalization": {
+    "kind": "non_affine_layer_norm",
+    "axis": "last_channel_dimension",
+    "eps": 1e-08,
+    "masked_expression_feature": "zero"
+  },
+  "input_fusion": {
+    "operation": "sum",
+    "trainable_coefficients": false,
+    "fixed_coefficients": {
+      "gene_identity": 1.0,
+      "expression": 1.0,
+      "global_context": 1.0
+    }
+  },
+  "graph_execution": {
+    "aggregation": "sparse_csr",
+    "normalization": "pyg_gcn_norm",
+    "aggregation_dtype": "float32"
+  },
+  "missingness_calibration": {
+    "input": "actual_total_missing_fraction_from_masked_input",
+    "injection": "affine_after_expression_head",
+    "initialization": "identity_for_every_missing_fraction",
+    "network": {
+      "hidden_dim": 64,
+      "reference_fraction": 0.15,
+      "feature_scale": 0.15,
+      "maximum_gain": 4.0,
+      "maximum_absolute_offset": 2.0
+    }
+  },
+  "architecture": "BulkFormerLatest",
+  "input_scale": "ln(TPM+1)",
+  "parameters": 154551299
+}

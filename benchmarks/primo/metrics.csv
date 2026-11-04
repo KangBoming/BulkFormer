@@ -1,0 +1,5 @@
+display_name,official_name,rank,elo,clinical_pearson,endotype_auroc,perturbation_centered_spearman,prognosis_auroc,treatment_auroc
+BulkFormer-Atlas,BulkFormer-variant,8th,972,0.481,0.783,0.327,0.732,0.618
+BulkFormer-Atlas + HVG,BulkFormer-variant + HVG,1st,1027,0.484,0.795,0.336,0.725,0.633
+BulkFormer-Latest,BulkFormer-V3Plus,14th,838,0.469,0.749,0.279,0.708,0.577
+BulkFormer-Latest + HVG,BulkFormer-V3Plus + HVG,6th,985,0.483,0.790,0.329,0.716,0.629

@@ -1,0 +1,19 @@
+{
+  "architecture": "BulkFormerAtlas",
+  "model": {
+    "num_genes": 22636,
+    "dim": 1024,
+    "layers": 16,
+    "heads": 16,
+    "ffn_dim": 2816,
+    "projection_dim": 512,
+    "projection_hidden_dim": 1024,
+    "dropout": 0.0
+  },
+  "input_scale": "log2(TPM+1)",
+  "context_length": 4096,
+  "normalization_vocabulary_size": 41623,
+  "readout": "CLS_before_projection",
+  "parameters": 242372356,
+  "encoder_parameters": 228738048
+}

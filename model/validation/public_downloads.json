@@ -1,0 +1,16 @@
+{
+  "atlas": {
+    "status": "passed",
+    "authenticated": false,
+    "configuration_sha256_verified": true,
+    "weight_prefix_bytes_verified": 524288,
+    "full_uploaded_file_md5_verified_separately": true
+  },
+  "latest": {
+    "status": "passed",
+    "authenticated": false,
+    "configuration_sha256_verified": true,
+    "weight_prefix_bytes_verified": 524288,
+    "full_uploaded_file_md5_verified_separately": true
+  }
+}

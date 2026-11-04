@@ -1,0 +1,125 @@
+{
+  "checked_at": "2026-11-04 06:35:47 UTC",
+  "status": "passed",
+  "files": [
+    {
+      "model": "atlas",
+      "name": "MODEL_CARD.md",
+      "id": "15OIrL-RAAlxQiuMdsE0WWHVMDB4zMhmO",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "atlas",
+      "name": "environment.yaml",
+      "id": "1kFao2vZ89Z6CnR8vovancYRwvgPm1MOs",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "atlas",
+      "name": "gene_vocab.csv",
+      "id": "1XFCMAGAA9hc7IIcL7h_BCYxZ0TS4Ndjd",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "atlas",
+      "name": "manifest.json",
+      "id": "1zh44JzyzAyU0hzkP54vKBZs2XYTso34G",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "atlas",
+      "name": "model.pt",
+      "id": "1RUBotjm3-ptS5ZhD5rMuY8c6voFhALQm",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "atlas",
+      "name": "model_config.json",
+      "id": "1JOIQUJ2kfrhykxqqFiwyUND2wCPEqwRB",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "atlas",
+      "name": "normalization_vocab.csv",
+      "id": "1X-uMpHYxE6czBUzfKwpsvyKKy-Q7WEzZ",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "atlas",
+      "name": "training_config.json",
+      "id": "1H7WdedDmazu4dESyqDvA8oTAk0klS7xB",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "MODEL_CARD.md",
+      "id": "1U8HeM71iqFVWLrt3oGmX6VI05DcnbcWr",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "edge_index.pt",
+      "id": "1Rb3m7Fl2xT9L2GXbb-r51VRse_PtH8ol",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "edge_weight.pt",
+      "id": "1tdhvZX6A2P4SxK8Ox_PsEkot_QKAshr8",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "environment.yaml",
+      "id": "1KDgSwLpeazW20BzB9dpXdQ13bIvmgScl",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "gene_vocab.csv",
+      "id": "1Oo4Wxn2Cd-CjLTd8XlBpQvZT0KuS_Bl2",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "manifest.json",
+      "id": "1y_BkXYrNoSbw9CUW2mkz7RGkpOUHd46J",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "model.pt",
+      "id": "1GWvOv4XpUaWOWl6NJyIHADf2mNEoTPVi",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "model_config.json",
+      "id": "1vcigPPfUECta2gdAd0_3_PjCi0jNDV2x",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "name": "training_config.json",
+      "id": "1DY_xJy67A-8otOz4fReHQfjziFnfTK1l",
+      "public_link_read_only": true,
+      "other_editors": false
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "python": "3.12.7",
+  "torch_cuda": "12.4",
+  "packages": {
+    "torch": "2.5.1",
+    "numpy": "2.0.2",
+    "pandas": "2.2.3",
+    "torch-geometric": "2.6.1",
+    "performer-pytorch": "1.1.4",
+    "gdown": "6.4.2",
+    "tqdm": "4.67.1",
+    "scikit-learn": "1.5.2",
+    "nbclient": "0.11.0",
+    "nbformat": "5.11.1",
+    "ipykernel": "7.4.0",
+    "ipywidgets": "8.1.9"
+  }
+}

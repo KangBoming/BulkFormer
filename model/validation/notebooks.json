@@ -1,0 +1,12 @@
+{
+  "bulkformer-atlas_sample_embeddings.ipynb": {
+    "status": "passed",
+    "seconds": 9.09,
+    "executed_cells": 8
+  },
+  "bulkformer-latest_feature_extraction.ipynb": {
+    "status": "passed",
+    "seconds": 11.35,
+    "executed_cells": 9
+  }
+}

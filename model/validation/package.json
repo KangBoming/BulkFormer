@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "package_version": "2.0.0",
+  "installed_from_wheel": true,
+  "bundled_download_registries": [
+    "atlas",
+    "latest"
+  ],
+  "both_cached_download_integrity_checks": "passed"
+}

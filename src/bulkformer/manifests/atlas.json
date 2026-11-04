@@ -1,0 +1,48 @@
+{
+  "format_version": 2,
+  "model_name": "atlas",
+  "checkpoint_id": "atlas-infonce-epoch10-update320000",
+  "google_drive_folder_id": "1OTLnUnnorCqL3nNVK0hfk0Om006WCsrJ",
+  "downloads": {
+    "MODEL_CARD.md": {
+      "google_drive_id": "15OIrL-RAAlxQiuMdsE0WWHVMDB4zMhmO",
+      "bytes": 2656,
+      "sha256": "e29b26c6f965902d182faec2c6dedbaf2f6ba82518fde9da09014b13101332ef"
+    },
+    "environment.yaml": {
+      "google_drive_id": "1kFao2vZ89Z6CnR8vovancYRwvgPm1MOs",
+      "bytes": 337,
+      "sha256": "fd7268c7ed61773d65a9f02fa7ad79b55cf042726b4307c5e949153c9eb4c16e"
+    },
+    "gene_vocab.csv": {
+      "google_drive_id": "1XFCMAGAA9hc7IIcL7h_BCYxZ0TS4Ndjd",
+      "bytes": 766288,
+      "sha256": "18845060c26c6afde6ab786baaddf1524b8dd37bf19fb99f2b86d41805ad6ff1"
+    },
+    "manifest.json": {
+      "google_drive_id": "1zh44JzyzAyU0hzkP54vKBZs2XYTso34G",
+      "bytes": 1592,
+      "sha256": "b95457bae04ba2fcccb12c6d0110dc2e5909ff1b7fa680b3026b033e4dff9f8b"
+    },
+    "model.pt": {
+      "google_drive_id": "1RUBotjm3-ptS5ZhD5rMuY8c6voFhALQm",
+      "bytes": 969530454,
+      "sha256": "7ea977cbbe2c62bef16b0e073a881ed5b7e834b037cd4f27b50742aa2313daeb"
+    },
+    "model_config.json": {
+      "google_drive_id": "1JOIQUJ2kfrhykxqqFiwyUND2wCPEqwRB",
+      "bytes": 436,
+      "sha256": "f175b3c37f0d16e8d2cd0bbf7013c2962ec160ceb0e3a0c2f6e8333a2a368e57"
+    },
+    "normalization_vocab.csv": {
+      "google_drive_id": "1X-uMpHYxE6czBUzfKwpsvyKKy-Q7WEzZ",
+      "bytes": 1779185,
+      "sha256": "4a3da86d4d330f3bc7e2a24292556ef54c2d107aec5c2747305289a6139f56be"
+    },
+    "training_config.json": {
+      "google_drive_id": "1H7WdedDmazu4dESyqDvA8oTAk0klS7xB",
+      "bytes": 1068,
+      "sha256": "1a667f494e03acbc52768ab4e38334c1a86ee75fd12b6e61285f611e4a210750"
+    }
+  }
+}

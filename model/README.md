@@ -1,21 +1,12 @@
-## 📥 Download Pretrained BulkFormer Models
+# Model downloads
 
-The pretrained **BulkFormer family** (five parameter scales) is available from **Google Drive**:
+| Model | Complete release folder | Weight file |
+|---|---|---|
+| BulkFormer-Atlas | [Google Drive](https://drive.google.com/drive/folders/1OTLnUnnorCqL3nNVK0hfk0Om006WCsrJ) | `model.pt`, approximately 970 MB |
+| BulkFormer-Latest | [Google Drive](https://drive.google.com/drive/folders/1wKXEgKk_oPkmaCITi4ASs-05FHl6qkvZ) | `model.pt`, approximately 619 MB |
 
+Download the folder contents into `model/atlas/` or `model/latest/`, or use `bulkformer.download_model`. The weights are one complete FP32 file per model, not split archives. Both folders include `model_config.json`, `gene_vocab.csv`, `manifest.json`, `training_config.json`, `environment.yaml` and `MODEL_CARD.md`. Atlas additionally needs `normalization_vocab.csv`; Latest needs `edge_index.pt` and `edge_weight.pt`. Extract a Drive-generated ZIP before loading.
 
+The loader verifies required resource checksums, matches configuration to checkpoint metadata, uses `weights_only=True`, and loads the model strictly. Weight files contain model tensors and plain metadata, without optimizer state, RNG state or training samples. Read access is public by link; editing remains restricted to the owner.
 
-> Please make sure to use the latest release. All model files, code, and data have been updated in this version.
-
-### BulkFormer Model Variants
-
-We trained and released **five BulkFormer models** at different parameter scales to support diverse research and deployment scenarios:
-
-| Model Name          | Parameters | Hidden Dim | Layers | Heads | Download |
-|---------------------|-----------:|-----------:|-------:|------:|:--------:|
-| **BulkFormer-37M**  | 37M        | 128        | 1      | 8     | [Download](https://drive.google.com/file/d/1qY2qaXfKfDot9EMcOF9gr8T0jghrH7km/view?usp=drive_link)  |
-| **BulkFormer-50M**  | 50M        | 256        | 2      | 8     | [Download](https://drive.google.com/file/d/12ZYGYrZIQJyodaVicrJpnY_8_JG-hamK/view?usp=drive_link)  |
-| **BulkFormer-93M**  | 93M        | 512        | 6      | 8     | [Download](https://drive.google.com/file/d/1s_3XoMaHiBfxi5C8D3bgwwzNrihafaIk/view?usp=drive_link)  |
-| **BulkFormer-127M** | 127M       | 640        | 8      | 8     | [Download](https://drive.google.com/file/d/1-5AdgIpkm8dOm9tuwOXcqS1sUyGN6vHg/view?usp=drive_link) |
-| **BulkFormer-147M** | 147M       | 640        | 12     | 8     | [Download](https://drive.google.com/file/d/1UtqN_vCh3669Fs-GU5CTE7F7UnuQCAzN/view?usp=drive_link) |
-
-
+The download registry records immutable checkpoint IDs. `latest` is the API model key for the pinned release, not an automatic download of a live training file. Original model downloads remain in the [family homepage](../README.md#original-model-family).

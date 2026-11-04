@@ -1,0 +1,13 @@
+# Atlas and Latest
+
+**Atlas** is a sample-oriented encoder. Each gene token sums a learned gene identity and a linear projection of scalar log2(TPM+1), then applies RMSNorm. A CLS token and the selected gene tokens pass through 16 pre-RMSNorm bidirectional Transformer blocks with SwiGLU feed-forward layers. There are no positional embeddings, GCN, GenePT or global-transcriptome MLP inputs. The public sample feature is the 1,024-d CLS output, before the 512-d contrastive projection.
+
+Pretraining makes two independently augmented gene views of each sample. Masked expression reconstruction and CLS-conditioned expression reconstruction use MSE. The latter predicts the non-dropped genes in that view, not the entire vocabulary at every update. A symmetric cross-view InfoNCE objective uses fixed temperature 0.07 and the 32-sample cross-GPU batch; each direction has 31 negatives per anchor. All three losses have weight 1.
+
+The token encoding, CLS, Transformer blocks, dual views and three-task framework follow Pandora's published-method description used during development. This release uses our independently trained weights, replaces the initial local sigmoid contrastive implementation with symmetric InfoNCE, uses a 242M scale and coding-only vocabulary, and extends that initial local 2,048-gene context to 4,096. The context comparison refers to our earlier local implementation. The PRIMO comparison is not a controlled one-variable ablation or a comparison to the official Pandora checkpoint.
+
+**Latest** is a full-transcriptome masked-expression encoder. Gene identity, fixed sinusoidal expression encoding and a global expression MLP (19,973 → 2,560 → 768) are separately normalized by non-affine LayerNorm. Their coefficients are fixed at 1:1:1. Another LayerNorm precedes a residual weighted GCN (hidden width 256), followed by 12 Performer layers and the expression head. A small network reads actual input missingness and predicts a bounded gain and offset applied after the expression head. Measured zeros remain observed. There is no GenePT input or CLS token.
+
+The fixed input coefficients do not freeze network weights. The GCN residual scale, normalization parameters, encoder, global MLP and prediction calibrator are trainable. Missingness calibration changes expression predictions; it is not a guarantee that gene embeddings are invariant to missingness.
+
+Atlas is the recommended starting point for the patient/sample tasks supported by the PRIMO evaluation. Latest is the recommended API for complete-axis contextual gene extraction and expression recovery. Both can produce sample and gene representations. A matched gene-level benchmark of these two released checkpoints is still needed before claiming gene-level superiority.
