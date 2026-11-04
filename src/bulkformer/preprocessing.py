@@ -79,7 +79,7 @@ def prepare_latest_input(expression, vocabulary, *, input_scale):
     aligned = _normalize(expression, vocabulary, input_scale, log_base=np.e)
     coverage = _coverage(aligned, expression.index)
     if (coverage.missing_fraction > .2).any():
-        warnings.warn('Some samples exceed 20% missingness, outside the additional masking range used in training. Inspect coverage and evaluate on your task.', stacklevel=2)
+        warnings.warn('Some samples exceed 20% missingness. Reduced input coverage can affect the outputs; evaluate performance on your intended data.', stacklevel=2)
     return aligned, coverage
 
 

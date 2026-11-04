@@ -9,3 +9,6 @@ outputs/
 model/atlas
 model/latest
 *.pt
+
+# Local experiment settings
+configs/*_training.json

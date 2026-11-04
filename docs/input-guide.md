@@ -16,7 +16,7 @@ The normalization vocabulary and input panel are different things. Do not normal
 
 Provide as complete a coding transcriptome as possible, aligned to all **19,973** positions. For raw counts, TPM is calculated over matched source-available vocabulary genes with the released lengths. The model receives natural ln(TPM+1). Missing source genes remain missing; measured zeros count toward coverage and sample pooling.
 
-Training additionally masked 10–20% of source-available entries per sample, averaging 15%. This is distinct from the total missing fraction, which also includes source-unavailable genes. The calibrator reads that total fraction. It does not remove the need for sufficient gene coverage, and performance at high missingness is task dependent.
+The expression calibrator reads the total missing fraction, including both unavailable source genes and values intentionally hidden for recovery. Sufficient gene coverage remains important, and performance at high missingness should be assessed on the intended data.
 
 To represent a sample with HVGs or DEGs, run the **complete gene axis** first, then select contextual outputs and pool observed selected genes. `gene_indices` selects returned outputs and never truncates the encoder input. Infer gene selection without using held-out labels. For expression recovery, replace the values to hide with -10 after preparing input, then read `expression_prediction` at those indices. Predictions are on the natural-log expression scale and can be slightly negative; retain raw values for evaluation.
 

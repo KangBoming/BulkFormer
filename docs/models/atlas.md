@@ -1,15 +1,31 @@
 # BulkFormer-Atlas
 
-**242,372,356 parameters; 22,636 coding genes; 1,024-d CLS.** Immutable checkpoint: `atlas-infonce-epoch10-update320000`. [Weights and resources](https://drive.google.com/drive/folders/1OTLnUnnorCqL3nNVK0hfk0Om006WCsrJ). Historical PRIMO submission name: `BulkFormer-variant`.
+**242.37M parameters · 22,636 coding genes · 1,024-dimensional CLS representation**
 
-The model uses 16 Transformer blocks, 16 heads, width 1,024 and SwiGLU hidden width 2,816, with network dropout 0. The encoder accounts for 228,738,048 parameters; the complete file also retains the pretraining heads and two unused legacy contrastive scalars. The contrastive projection is 512-d; downstream PRIMO features are the pre-projection CLS.
+[Weights and resources](https://drive.google.com/drive/folders/1OTLnUnnorCqL3nNVK0hfk0Om006WCsrJ) · [GPU tutorial](../../notebooks/bulkformer-atlas_sample_embeddings.ipynb) · [Model configuration](../../configs/atlas_model.json)
 
-Training used 1,028,046 ARCHS4 profiles and 1,548 validation profiles, with no GSE overlap between those splits. Each sample produces two independently sampled 4,096-gene views. Gaussian gene/sample noise has scale 0.1; token dropout and expression masking among retained genes each have probability 0.2. Masked reconstruction targets the clean original values. The expected masked fraction of the initial panel is 16%.
+## Architecture
 
-AdamW: betas (0.9, 0.95), weight decay 0.05, clipping 1.0, BF16, four GPUs with eight samples per GPU and no gradient accumulation. Learning rate: 3% warmup to 1e-4, then cosine decay to 1e-5 over the planned 40-epoch horizon. The run completed ten epochs and entered epoch 11; this file is the best checkpoint at update 320,000, with validation total loss **1.27032864**. Validation ran every 2,000 updates and was capped at 1,024 of the 1,548 validation samples. Recovery checkpoints were saved every 5,000 updates.
+| Component | Configuration |
+|---|---|
+| Complete model / encoder parameters | 242,372,356 / 228,738,048 |
+| Transformer width / layers / heads | 1,024 / 16 / 16 |
+| Attention | Full bidirectional self-attention |
+| Feed-forward block | SwiGLU, hidden width 2,816 |
+| Normalization / network dropout | RMSNorm / 0 |
+| Gene input | Learned identity + linear expression projection |
+| Sample readout | Native CLS, before the 512-dimensional projection head |
+| Input panel | Up to 4,096 observed coding genes, fixed within a cohort |
+| Expression scale | log2(TPM + 1) |
 
-The framework is Pandora-inspired; symmetric InfoNCE replaces the initial local sigmoid loss. This checkpoint was trained from scratch and is not the official Pandora authors' weight file. [Method details](../architecture.md) · [Training JSON](../../configs/atlas_training.json).
+The encoder has no positional embeddings, GCN, GenePT or global-transcriptome MLP. The complete checkpoint retains its expression and projection heads for strict loading; the released sample workflow uses the native CLS representation.
 
-Recommended use: frozen sample features for cohort classification, clinical score regression and other patient-level predictors. The PRIMO result supports the aggregate performance of this particular pipeline, not universal superiority on every sample task. Input panels must be fixed within the intended cohort/evaluation protocol. Avoid treating targeted panels or microarray values as equivalent to complete count data.
+The encoder design is Pandora-inspired. This is an independently produced BulkFormer checkpoint, not the official Pandora weight file. [Architecture comparison](../architecture.md)
 
-PRIMO source-scale exceptions and public-task selection are recorded in [the benchmark card](../../benchmarks/primo/README.md). Overlap between the anonymized PRIMO cohorts and pretraining has not been fully audited.
+## Usage and evaluation
+
+Use Atlas for frozen sample features in cohort classification, clinical score regression and other patient-level predictors. Normalize expression with the supplied vocabulary before selecting coding genes, and retain the selected panel for subsequent samples. [Input guide](../input-guide.md#atlas)
+
+Immutable checkpoint ID: `atlas-infonce-epoch10-update320000`. The official PRIMO submission name is `BulkFormer-variant`; its evaluation uses native CLS embeddings. [Results and protocol](../../benchmarks/primo/README.md)
+
+The PRIMO result supports this pipeline's aggregate performance, rather than universal superiority on every task. Source-scale exceptions and public-task selection are documented in the benchmark card; overlap between anonymized PRIMO cohorts and pretraining has not been fully audited.
