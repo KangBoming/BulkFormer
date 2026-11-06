@@ -1,6 +1,7 @@
 {
-  "checked_at": "2026-11-04 06:35:47 UTC",
   "status": "passed",
+  "latest_checked_on": "2026-11-06",
+  "atlas_checked_on": "2026-11-04",
   "files": [
     {
       "model": "atlas",
@@ -60,64 +61,73 @@
     },
     {
       "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
       "name": "MODEL_CARD.md",
-      "id": "1U8HeM71iqFVWLrt3oGmX6VI05DcnbcWr",
+      "id": "1TM_uMun_Fg_5gp_CSjsY2Ln61-Vx0reN",
       "public_link_read_only": true,
       "other_editors": false
     },
     {
       "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
       "name": "edge_index.pt",
-      "id": "1Rb3m7Fl2xT9L2GXbb-r51VRse_PtH8ol",
+      "id": "1qv2RVhcvzmCE5014emf8LCqY6LZwo3aM",
       "public_link_read_only": true,
       "other_editors": false
     },
     {
       "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
       "name": "edge_weight.pt",
-      "id": "1tdhvZX6A2P4SxK8Ox_PsEkot_QKAshr8",
+      "id": "1T8mJuuDYickVThW90v4Zwo3o1uhpyASd",
       "public_link_read_only": true,
       "other_editors": false
     },
     {
       "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
       "name": "environment.yaml",
-      "id": "1KDgSwLpeazW20BzB9dpXdQ13bIvmgScl",
+      "id": "1Wr8kspoBEGftaZs0kT2DTZLwIYnsl_Fn",
       "public_link_read_only": true,
       "other_editors": false
     },
     {
       "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
       "name": "gene_vocab.csv",
-      "id": "1Oo4Wxn2Cd-CjLTd8XlBpQvZT0KuS_Bl2",
+      "id": "1MzboBkObxJh_MXHdP_LDYiV_MdJ8zBoA",
       "public_link_read_only": true,
       "other_editors": false
     },
     {
       "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
       "name": "manifest.json",
-      "id": "1y_BkXYrNoSbw9CUW2mkz7RGkpOUHd46J",
+      "id": "1UaI-yt4dAiJG76YoFy7zz7AaXFYJcqiO",
       "public_link_read_only": true,
       "other_editors": false
     },
     {
       "model": "latest",
-      "name": "model.pt",
-      "id": "1GWvOv4XpUaWOWl6NJyIHADf2mNEoTPVi",
-      "public_link_read_only": true,
-      "other_editors": false
-    },
-    {
-      "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
       "name": "model_config.json",
-      "id": "1vcigPPfUECta2gdAd0_3_PjCi0jNDV2x",
+      "id": "10kq8Mf5RyfB6VHj1x6d2XYX3auR4Uabl",
       "public_link_read_only": true,
       "other_editors": false
     },
     {
       "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
       "name": "training_config.json",
-      "id": "1DY_xJy67A-8otOz4fReHQfjziFnfTK1l",
+      "id": "1Pq-tDpztnWw5qusFC9kUWNAIY5pHu-mS",
+      "public_link_read_only": true,
+      "other_editors": false
+    },
+    {
+      "model": "latest",
+      "checkpoint_id": "latest-20261106-epoch20-update148300",
+      "name": "model.pt",
+      "id": "1KpYHz-EO7mDIfQW_495_SXuwxG-zhTOj",
       "public_link_read_only": true,
       "other_editors": false
     }

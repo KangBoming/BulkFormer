@@ -1,51 +1,51 @@
 {
   "format_version": 2,
   "model_name": "latest",
-  "checkpoint_id": "latest-20261104-epoch19-update140885",
+  "checkpoint_id": "latest-20261106-epoch20-update148300",
   "google_drive_folder_id": "1wKXEgKk_oPkmaCITi4ASs-05FHl6qkvZ",
   "downloads": {
     "MODEL_CARD.md": {
-      "google_drive_id": "1U8HeM71iqFVWLrt3oGmX6VI05DcnbcWr",
-      "bytes": 3074,
-      "sha256": "8f39a110754a73f2681ccb06cf397295df2fbc0984ddde3aacb78586f51b0c2e"
+      "google_drive_id": "1TM_uMun_Fg_5gp_CSjsY2Ln61-Vx0reN",
+      "bytes": 2505,
+      "sha256": "0228a6eab50e3ce9f35a4527658935ac10c91d00e08b639f8f0b6f80febde786"
     },
     "edge_index.pt": {
-      "google_drive_id": "1Rb3m7Fl2xT9L2GXbb-r51VRse_PtH8ol",
+      "google_drive_id": "1qv2RVhcvzmCE5014emf8LCqY6LZwo3aM",
       "bytes": 10739627,
       "sha256": "ce2eabbeb9b6f053eeae2cc994b2f6e0e03c46590b86b733f6035b346012ca1f"
     },
     "edge_weight.pt": {
-      "google_drive_id": "1tdhvZX6A2P4SxK8Ox_PsEkot_QKAshr8",
+      "google_drive_id": "1T8mJuuDYickVThW90v4Zwo3o1uhpyASd",
       "bytes": 2685808,
       "sha256": "182f34418d07e7f6e4d487068b5e466d4410baa06e28973ca667db3b5a76e61d"
     },
     "environment.yaml": {
-      "google_drive_id": "1KDgSwLpeazW20BzB9dpXdQ13bIvmgScl",
+      "google_drive_id": "1Wr8kspoBEGftaZs0kT2DTZLwIYnsl_Fn",
       "bytes": 337,
       "sha256": "fd7268c7ed61773d65a9f02fa7ad79b55cf042726b4307c5e949153c9eb4c16e"
     },
     "gene_vocab.csv": {
-      "google_drive_id": "1Oo4Wxn2Cd-CjLTd8XlBpQvZT0KuS_Bl2",
+      "google_drive_id": "1MzboBkObxJh_MXHdP_LDYiV_MdJ8zBoA",
       "bytes": 704206,
       "sha256": "3c6393644cc04fd9098ed386d41f9f552dd25debcb1d732d4debb9bd8907a1e9"
     },
     "manifest.json": {
-      "google_drive_id": "1y_BkXYrNoSbw9CUW2mkz7RGkpOUHd46J",
-      "bytes": 1663,
-      "sha256": "98fca9dd778fb25520b6eaa0fc70812dd69376efde1d4531ebe44b4e027741b5"
+      "google_drive_id": "1UaI-yt4dAiJG76YoFy7zz7AaXFYJcqiO",
+      "bytes": 1659,
+      "sha256": "3a1c742a157759286be015f5cd2896ad7d4ab08a6641d3b258b872a2e32cb048"
     },
     "model.pt": {
-      "google_drive_id": "1GWvOv4XpUaWOWl6NJyIHADf2mNEoTPVi",
+      "google_drive_id": "1KpYHz-EO7mDIfQW_495_SXuwxG-zhTOj",
       "bytes": 619110674,
-      "sha256": "c9b034e4674bac0c93b06824b59eeb550bbdfece2ad718619331f6bb4aeade25"
+      "sha256": "19f2e82807edfd5638cd57e97712895d95409b328c9f0bb1ab58dd0e7fe9a50e"
     },
     "model_config.json": {
-      "google_drive_id": "1vcigPPfUECta2gdAd0_3_PjCi0jNDV2x",
+      "google_drive_id": "10kq8Mf5RyfB6VHj1x6d2XYX3auR4Uabl",
       "bytes": 1805,
       "sha256": "9c7c27ec6d4cda3f760d7870342b4a839f47edcd97f282a8e9242917f64294ca"
     },
     "training_config.json": {
-      "google_drive_id": "1DY_xJy67A-8otOz4fReHQfjziFnfTK1l",
+      "google_drive_id": "1Pq-tDpztnWw5qusFC9kUWNAIY5pHu-mS",
       "bytes": 1295,
       "sha256": "48cf4062c1776db8ab48fa82d061b58ff60b94722ebac4993648f9fe9644a584"
     }

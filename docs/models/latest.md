@@ -25,6 +25,6 @@ All gene positions are encoded together. A residual weighted GCN precedes the Pe
 
 Provide the complete available coding transcriptome for contextual gene extraction and expression recovery. To summarize HVGs or DEGs, select their contextual outputs after encoding and then pool them. [Input guide](../input-guide.md#latest)
 
-Immutable checkpoint ID: `latest-20261104-epoch19-update140885`. The PRIMO entry `BulkFormer-V3Plus` uses this checkpoint with mean pooling over available genes. [Results and protocol](../../benchmarks/primo/README.md)
+Current checkpoint: **final epoch 20 / update 148,300**, `latest-20261106-epoch20-update148300`. The historical PRIMO entry `BulkFormer-V3Plus` was evaluated with epoch 19 / update 140,885 and mean pooling over available genes. Those scores do not evaluate this final checkpoint. [Results and protocol](../../benchmarks/primo/README.md)
 
 The gene-level recommendation follows the architecture and output interface; a matched Atlas-versus-Latest gene-level benchmark remains to be established. Some downstream phenotype cohorts overlap with source collections, and overlap with anonymized PRIMO cohorts has not been fully audited.

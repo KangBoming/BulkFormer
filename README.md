@@ -16,6 +16,8 @@
 
 BulkFormer provides pretrained representations of human bulk transcriptomes. **BulkFormer-Atlas** is our recommended starting point for sample-level prediction; **BulkFormer-Latest** provides contextual gene features and expression recovery. This repository brings both models together with the original publication models.
 
+> **2026-11-06 · Latest checkpoint update:** BulkFormer-Latest now downloads the **final epoch-20 checkpoint**. The architecture and API are unchanged. [Model card](docs/models/latest.md) · [Download guide](model/README.md)
+>
 > **2026-11-04 · New releases:** BulkFormer-Atlas and BulkFormer-Latest are available with complete weights, inference code and executed GPU tutorials. [Release](https://github.com/KangBoming/BulkFormer/releases/tag/v2026.11.04) · [Announcement](https://github.com/KangBoming/BulkFormer/discussions/13) · [Changelog](CHANGELOG.md)
 >
 > **Follow model updates:** Select **Watch → Custom → Releases** on this repository. Visit [Announcements](https://github.com/KangBoming/BulkFormer/discussions/categories/announcements) for release news and discussion.
@@ -68,7 +70,7 @@ The official bulk board contains **59 tasks · 39 cohorts · 4,922 patients**, w
 <details>
 <summary><strong>Submission names and evaluation protocol</strong></summary>
 
-- **Atlas** appears as `BulkFormer-variant`; **Latest** appears as `BulkFormer-V3Plus`. Older rows named `BulkFormer-Latest` refer to the archived release.
+- **Atlas** appears as `BulkFormer-variant`; the **epoch-19 Latest** submission appears as `BulkFormer-V3Plus`. These scores do not evaluate the current final epoch-20 download. Older rows named `BulkFormer-Latest` refer to the archived release.
 - **+ HVG** concatenates the embedding with the organizer's **1,200-gene expression baseline**. It is separate from Atlas's 4,096-gene input panel. Atlas alone ranks 8th in this snapshot.
 - Rankings can change, and small Elo differences do not establish statistical significance. [Full results and protocol](benchmarks/primo/README.md) document preprocessing, public-task model selection and the limits of the pretraining-overlap audit.
 

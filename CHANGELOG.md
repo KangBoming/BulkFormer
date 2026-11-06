@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-06
+
+- Update BulkFormer-Latest to the final epoch 20 / update 148,300 checkpoint.
+- Keep the existing Google Drive release-folder link; archive epoch 19 with its original file IDs.
+- Refresh pinned file hashes and rerun the Latest tutorial and inference comparisons on GPU.
+- Keep PRIMO results attributed to the evaluated epoch-19 checkpoint; epoch 20 has not been evaluated on PRIMO.
+
 ## 2026-11-04
 
 - Make the main BulkFormer repository the entry point for the model family.

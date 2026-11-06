@@ -1,10 +1,80 @@
 {
-  "gpu": "physical GPU3",
-  "gpu_name": "NVIDIA A800 80GB PCIe",
-  "torch": "2.5.1+cu124",
-  "precision": "BF16",
-  "demo": "8 synthetic count profiles; not biological performance evidence",
+  "status": "passed",
+  "latest": {
+    "status": "passed",
+    "validated_on": "2026-11-06",
+    "gpu": "physical GPU1",
+    "gpu_name": "NVIDIA A800 80GB PCIe",
+    "torch": "2.5.1+cu124",
+    "checkpoint_id": "latest-20261106-epoch20-update148300",
+    "all_model_state_tensors_exact": true,
+    "equal_tensors": 434,
+    "normalized_graph_weights_exact": true,
+    "demo": "Synthetic count profiles with measured zeros and missing inputs; not a biological benchmark",
+    "comparisons": {
+      "bf16": {
+        "relative_l2_tolerance": 0.01,
+        "sample_embeddings": {
+          "shape": [
+            2,
+            768
+          ],
+          "relative_l2_difference": 0.00018957708380185068,
+          "max_absolute_difference": 0.0006759166717529297
+        },
+        "gene_embeddings": {
+          "shape": [
+            2,
+            19973,
+            768
+          ],
+          "relative_l2_difference": 0.004713638685643673,
+          "max_absolute_difference": 1.2329336404800415
+        },
+        "expression_prediction": {
+          "shape": [
+            2,
+            19973
+          ],
+          "relative_l2_difference": 0.003950237762182951,
+          "max_absolute_difference": 0.7598795890808105
+        }
+      },
+      "fp32": {
+        "relative_l2_tolerance": 0.0001,
+        "sample_embeddings": {
+          "shape": [
+            2,
+            768
+          ],
+          "relative_l2_difference": 1.0066631972449613e-07,
+          "max_absolute_difference": 7.152557373046875e-07
+        },
+        "gene_embeddings": {
+          "shape": [
+            2,
+            19973,
+            768
+          ],
+          "relative_l2_difference": 1.141021698458644e-06,
+          "max_absolute_difference": 0.00039571523666381836
+        },
+        "expression_prediction": {
+          "shape": [
+            2,
+            19973
+          ],
+          "relative_l2_difference": 1.3853609743819106e-06,
+          "max_absolute_difference": 0.0004544258117675781
+        }
+      }
+    },
+    "peak_gpu_gib": 2.6929264068603516,
+    "seconds": 12.6
+  },
   "atlas": {
+    "validated_on": "2026-11-04",
+    "gpu": "physical GPU3",
     "parameters": 242372356,
     "cls": {
       "shape": [
@@ -25,74 +95,6 @@
       "relative_l2_difference": 0.0,
       "exact_match": true,
       "dataset": "d002"
-    }
-  },
-  "latest": {
-    "parameters": 154551299,
-    "source_checkpoint_id": "latest-20261104-epoch19-update140885",
-    "all_model_state_tensors_exact": true,
-    "normalized_graph_weights_exact": true,
-    "numerical_note": "CUDA CSR reductions have observed run-to-run variation that BF16 can amplify. Full-gene, sample and expression relative L2 differences must each remain below 1%.",
-    "sample_embeddings": {
-      "shape": [
-        2,
-        768
-      ],
-      "max_absolute_difference": 0.0006155967712402344,
-      "relative_l2_difference": 0.00021114133414812386,
-      "exact_match": false
-    },
-    "gene_embeddings": {
-      "shape": [
-        2,
-        19973,
-        768
-      ],
-      "max_absolute_difference": 0.5503607988357544,
-      "relative_l2_difference": 0.003117538755759597,
-      "exact_match": false
-    },
-    "expression_prediction": {
-      "shape": [
-        2,
-        19973
-      ],
-      "max_absolute_difference": 0.24235868453979492,
-      "relative_l2_difference": 0.0017635897966101766,
-      "exact_match": false
-    }
-  },
-  "peak_gpu_gib": 2.614027976989746,
-  "seconds": 16.30964837502688,
-  "status": "passed",
-  "latest_fp32": {
-    "precision": "FP32",
-    "tf32": false,
-    "status": "passed",
-    "sample_embeddings": {
-      "shape": [
-        1,
-        768
-      ],
-      "max_absolute_difference": 4.76837158203125e-07,
-      "relative_l2_difference": 1.1446648784385616e-07
-    },
-    "gene_embeddings": {
-      "shape": [
-        1,
-        19973,
-        768
-      ],
-      "max_absolute_difference": 0.00033348798751831055,
-      "relative_l2_difference": 8.870491114976176e-07
-    },
-    "expression_prediction": {
-      "shape": [
-        1,
-        19973
-      ],
-      "max_absolute_difference": 6.127357482910156e-05,
-      "relative_l2_difference": 4.5713392182733514e-07
     }
   }
 }

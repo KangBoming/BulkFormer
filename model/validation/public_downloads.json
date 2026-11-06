@@ -8,9 +8,11 @@
   },
   "latest": {
     "status": "passed",
+    "validated_on": "2026-11-06",
+    "checkpoint_id": "latest-20261106-epoch20-update148300",
     "authenticated": false,
-    "configuration_sha256_verified": true,
+    "configuration_and_gene_resources_sha256_verified": true,
     "weight_prefix_bytes_verified": 524288,
-    "full_uploaded_file_md5_verified_separately": true
+    "full_uploaded_file_sha256_verified_separately": true
   }
 }

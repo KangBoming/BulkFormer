@@ -11,11 +11,13 @@ Score snapshot: **2026-11-04 12:33:58 +08:00**, 19 leaderboard entries. The offi
 
 The renaming in this repository does not create a new submission or alter the external board. The raw rendered-board snapshot and aggregate CSV preserve the official names. The first-place claim applies to **Atlas + HVG**, not Atlas alone. Rankings change as entries change, and Elo differences are not confidence intervals.
 
-The board also retains an older entry literally named `BulkFormer-Latest`. It belongs to the previous release, not the epoch-19 Latest checkpoint documented here; use the aliases in the table to identify the correct rows.
+The board also retains an older entry literally named `BulkFormer-Latest`. It belongs to the previous release, not the epoch-19 Latest checkpoint evaluated in this table or the current final epoch-20 download; use the aliases in the table to identify the correct rows.
 
 Atlas uses epoch 10 / update 320,000, native pre-projection CLS (1,024 dimensions), BF16 and batch 2. Each dataset uses one fixed set of 4,096 positive-variance mapped coding genes selected without labels across that whole dataset, shared across its samples, tasks and folds. Normalization precedes selection and retains the original 41,623-gene denominator and gene lengths. This whole-cohort selection is transductive; prospective uses should fit selection on training data.
 
-Latest uses epoch 19 / update 140,885, the same checkpoint released here. It encodes the complete available transcriptome and averages contextual gene outputs over observed mapped genes, including measured zeros, yielding 768 dimensions. Inference used BF16, batch 4, no random masking, and no PRIMO fine-tuning. No HVG restriction was applied to its input or pooling.
+These Latest results use epoch 19 / update 140,885. The current download was updated to final epoch 20 / update 148,300 on 2026-11-06; it has not been evaluated on PRIMO. The [epoch-19 weights](https://drive.google.com/drive/folders/1OYexRemCBEEcY5ClYgl51FtvgauI5V17) remain available to reproduce these results.
+
+The evaluated epoch-19 model encodes the complete available transcriptome and averages contextual gene outputs over observed mapped genes, including measured zeros, yielding 768 dimensions. Inference used BF16, batch 4, no random masking, and no PRIMO fine-tuning. No HVG restriction was applied to its input or pooling.
 
 The organizer independently constructs `+ HVG` by concatenating the representation with its **1,200-gene expression baseline**. Those features are not Atlas's 4,096 input genes and are not contextual gene embeddings. The evaluation uses the official frozen probe and split protocol, not the random-forest phenotype benchmark or original paper settings.
 
